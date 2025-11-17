@@ -1,0 +1,1115 @@
+<?xml version="1.0"?>
+<monkeyml version="1.0">
+    <io_devices tag="IO Devices">
+        <iodevice type="stimulus_display" tag="Stimulus Display" background_color="0, 0, 0" redraw_on_every_refresh="NO" announce_stimuli_on_implicit_updates="YES"></iodevice>
+        <iodevice tag="mIO" type="mIO" data_interval="1ms" joystick_direction="IO_joystickDirection" joystick_strength="IO_joystickStrength" joystick_x_raw="IO_joystickX_raw" joystick_y_raw="IO_joystickY_raw" joystick_x_calib="IO_joystickX_calib" joystick_y_calib="IO_joystickY_calib" reward_a="IO_rewardA"></iodevice>
+        <iodevice tag="Eyelink" type="eyelink" data_interval="1ms" eye_rx="EYE_rightX_raw" eye_ry="EYE_rightY_raw" eye_lx="EYE_leftX_raw" eye_ly="EYE_leftY_raw" eye_x="EYE_x_raw" eye_y="EYE_y_raw" eye_z="EYE_z_raw" href_rx="EYE_rightX_href" href_ry="EYE_rightY_href" href_lx="EYE_leftX_href" href_ly="EYE_leftY_href" pupil_rx="EYE_rightPupilX_raw" pupil_ry="EYE_rightPupilY_raw" pupil_lx="EYE_leftPupilX_raw" pupil_ly="EYE_leftPupilY_raw" pupil_size_r="EYE_rightPupilSize_raw" pupil_size_l="EYE_leftPupilSize_raw" eye_time="EYE_sampleTime_ms" tracking_dist="1024" tracker_ip="100.1.1.1"></iodevice>
+        <calibrator type="standard_eye_calibrator" tag="EyeCalibrator" eyeh_raw="EYE_x_raw" eyev_raw="EYE_y_raw" eyeh_calibrated="EYE_x_dva" eyev_calibrated="EYE_y_dva"></calibrator>
+        <filter type="basic_eye_monitor" tag="EyeMonitor" eyeh_calibrated="EYE_x_dva" eyev_calibrated="EYE_y_dva" eye_state="EYE_saccade" width_samples="5" saccade_entry_speed="50" saccade_exit_speed="20"></filter>
+    </io_devices>
+    <variables tag="Variables">
+        <folder tag="CTRL">
+            <variable tag="CTRL_RequiredHitNo" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_ITI_ms" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1000" type="any"></variable>
+            <variable tag="CTRL_steadyState_beforeTarget" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_steadyState_min" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_steadyState_max" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_SteadyStateDuration" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_directionChange_list" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="45,90,135,180" type="list"></variable>
+            <variable tag="CTRL_trial_min" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="10000" type="any"></variable>
+            <variable tag="CTRL_trial_max" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="20000" type="any"></variable>
+            <variable tag="CTRL_trial_duration" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_frameTimer_duration" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="16" type="any"></variable>
+            <variable tag="CTRL_Time2Target" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_snr_min" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_snr_max" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_Xmax" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="15.2024" type="any"></variable>
+            <variable tag="CTRL_Ymax" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="11.4018" type="any"></variable>
+            <variable tag="CTRL_start_area_colorChange_ms" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="500" type="any"></variable>
+            <variable tag="CTRL_start_area_col_r" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_start_area_col_g" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_start_area_col_b" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_target_size" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="2" type="any"></variable>
+            <variable tag="CTRL_target_ON" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_HoldTarget_ms" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_target_duration" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_target_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_target_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="9.25" type="any"></variable>
+            <variable tag="CTRL_target_alpha" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="CTRL_target_col_r" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_target_col_g" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_target_col_b" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_target_flag" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_target_flag1" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_target_flag2" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_target_flag3" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_target_flag4" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_target_collision_area" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="2" type="any"></variable>
+            <variable tag="CTRL_arc_width" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_arc_size" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="20" type="any"></variable>
+            <variable tag="CTRL_arc_flag" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_arc_alpha" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_arc_trigger_min" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="CTRL_arc_trigger_max" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="CTRL_arc_col_r" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1" type="any"></variable>
+            <variable tag="CTRL_arc_col_g" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1" type="any"></variable>
+            <variable tag="CTRL_arc_col_b" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_arcMask_size" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="17" type="any"></variable>
+            <variable tag="CTRL_arcMask_flag" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_PreSNR_TargetDuration" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_PreSNR_ResponseWindow" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+        </folder>
+        <folder tag="INFO">
+            <variable tag="INFO_task" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="INFO_HitCounter" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="INFO_cursor_accuracyDisplay" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="INFO_ExtraCash" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+        </folder>
+        <folder tag="IO">
+            <variable tag="IO_joystickDirection" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="float"></variable>
+            <variable tag="IO_joystickStrength" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_joystickX_raw" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="integer"></variable>
+            <variable tag="IO_joystickY_raw" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="integer"></variable>
+            <variable tag="IO_joystickX_calib" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="float"></variable>
+            <variable tag="IO_joystickY_calib" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="float"></variable>
+            <variable tag="IO_start_area_flag" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_start_area_size" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="2" type="any"></variable>
+            <variable tag="IO_rewardA" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_cursor_distance2center" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_cursor_accuracy" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_cursor_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_cursor_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+        </folder>
+        <folder tag="TMP">
+            <variable tag="pi" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="3.14159265359" type="any"></variable>
+            <variable tag="TMP_dice" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="TMP_RDPdir" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="TMP_stimDir" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="TMP_joyDeviation" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="TMP_normStimDir" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="TMP_normJoyDir" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="TMP_scalingFactor" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="TMP_steady_ts" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="TMP_ExtraCash" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+        </folder>
+        <folder tag="RDP">
+            <variable tag="RDP_radius" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="8" type="any"></variable>
+            <variable tag="RDP_direction" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="RDP_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="RDP_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="RDP_density" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="5" type="any"></variable>
+            <variable tag="RDP_dotsize" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.2" type="any"></variable>
+            <variable tag="RDP_speed" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="4" type="any"></variable>
+            <variable tag="RDP_coherence" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="RDP_lifetime" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.3" type="any"></variable>
+        </folder>
+        <folder tag="ML">
+            <variable tag="ML_trialEnd" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="ML_trialStart" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="ML_sync" scope="global" logging="when_changed" default_value="0" type="boolean"></variable>
+        </folder>
+        <folder tag="TRIAL">
+            <variable tag="TRIAL_outcome" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+        </folder>
+        <folder tag="SC">
+            <variable tag="SC_steps" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="&quot;1 0.9 0.81 0.729 0.6561 0.59049 0.531441 0.478297 0.430467 0.38742 0.348678 0.313811 0.28243 0.254187 0.228768 0.205891 0.185302 0.166772 0.150095 0.135085 0.121577 0.109419 0.098477 0.088629 0.079766 0.07179 0.064611 0.05815 0.052335 0.047101 0.042391 0.038152 0.034337 0.030903 0.027813 0.025032 0.022528 0.020276 0.018248 0.016423 0.014781 0.013303 0.011973 0.010775 0.009698 0.008728 0.007855 0.00707 0.006363 0.005726&quot;" type="any"></variable>
+            <variable tag="SC_in" scope="global" logging="when_changed" default_value="0" type="boolean" persistant="0"></variable>
+            <variable tag="SC_out" scope="global" logging="when_changed" default_value="0" type="float" persistant="0"></variable>
+            <variable tag="SC_left_step" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
+            <variable tag="SC_left_rate" scope="global" logging="when_changed" default_value="4" type="integer" persistant="1"></variable>
+            <variable tag="SC_right_step" scope="global" logging="when_changed" default_value="3" type="integer" persistant="1"></variable>
+            <variable tag="SC_right_rate" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
+            <variable tag="SC_index_starting" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
+        </folder>
+        <folder tag="EYE">
+            <variable tag="EYE_x_dva" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_y_dva" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_z_dva" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_rightX_raw" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_rightY_raw" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_leftX_raw" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_leftY_raw" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_x_raw" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_y_raw" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_z_raw" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_rightX_href" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_rightY_href" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_leftX_href" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_leftY_href" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_rightPupilX_raw" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_rightPupilY_raw" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_leftPupilX_raw" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_leftPupilY_raw" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_rightPupilSize_raw" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_leftPupilSize_raw" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EYE_sampleTime_ms" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="EYE_saccade" scope="global" logging="when_changed" default_value="0" type="boolean"></variable>
+            <variable tag="local_posX" scope="local" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="local_posY" scope="local" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+        </folder>
+        <folder tag="CALIB">
+            <variable tag="fixationPoint_color_r" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1" type="integer"></variable>
+            <variable tag="fixationPoint_color_g" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1" type="integer"></variable>
+            <variable tag="fixationPoint_color_b" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1" type="integer"></variable>
+            <variable tag="IO_fixationPoint" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="CTRL_fixationWidth_dva" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="20" type="any"></variable>
+            <variable tag="fixationPoint_posX" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="fixationPoint_posY" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+        </folder>
+    </variables>
+    <sounds tag="Sounds">
+        <sound tag="Reward" type="wav_file" path="./sounds/reward.wav" amplitude="1.0"></sound>
+    </sounds>
+    <stimuli tag="Stimuli">
+        <stimulus type="fixation_point" tag="fixationPoint" color="fixationPoint_color_r,fixationPoint_color_g,fixationPoint_color_b" trigger_width="CTRL_fixationWidth_dva" trigger_watch_x="EYE_x_dva" trigger_watch_y="EYE_y_dva" trigger_flag="IO_fixationPoint" x_size="0.5" y_size="0.5" x_position="fixationPoint_posX" y_position="fixationPoint_posY" rotation="0" alpha_multiplier="1"></stimulus>
+        <stimulus type="blank_screen" tag="Background" color="0.5,0.5,0.5"></stimulus>
+        <stimulus type="circular_fixation_point" tag="start_area" color="CTRL_start_area_col_r,CTRL_start_area_col_g,CTRL_start_area_col_b" trigger_width="IO_start_area_size" trigger_watch_x="IO_cursor_x" trigger_watch_y="IO_cursor_y" trigger_flag="IO_start_area_flag" x_size="IO_start_area_size" y_size="IO_start_area_size" x_position="0" y_position="0" rotation="0" alpha_multiplier=".3"></stimulus>
+        <stimulus type="r_d_p" tag="RDP" radius="RDP_radius" x_position="RDP_x" y_position="RDP_y" dot_density="RDP_density" dot_size="RDP_dotsize" color="1,1,1" alpha_multiplier="1.0" direction="RDP_direction" speed="RDP_speed" coherence="RDP_coherence" lifetime="RDP_lifetime" announce_dots="NO" autoplay="YES"></stimulus>
+        <stimulus type="circular_fixation_point" tag="cursor" color="CTRL_arc_col_r,CTRL_arc_col_g,CTRL_arc_col_b" trigger_width="0" trigger_watch_x="0" trigger_watch_y="0" trigger_flag="0" x_size="1" y_size="1" x_position="-CTRL_Xmax * IO_joystickX_calib" y_position="CTRL_Ymax * IO_joystickY_calib" rotation="0" alpha_multiplier="1"></stimulus>
+        <stimulus type="circular_fixation_point" tag="target" color="CTRL_target_col_r,CTRL_target_col_g,CTRL_target_col_b" trigger_width="CTRL_target_size" trigger_watch_x="IO_cursor_x" trigger_watch_y="IO_cursor_y" trigger_flag="CTRL_target_flag" x_size="CTRL_target_size" y_size="CTRL_target_size" x_position="CTRL_target_x" y_position="CTRL_target_y" rotation="0" alpha_multiplier="CTRL_target_alpha"></stimulus>
+        <stimulus type="advstimulus" tag="arc" trigger_width="CTRL_arc_size" trigger_watch_x="CTRL_target_x" trigger_watch_y="CTRL_target_y" trigger_flag="CTRL_arc_flag" x_size="CTRL_arc_size" y_size="CTRL_arc_size" x_position="0" y_position="0" shape="format(&quot;circle %d&quot;, (integer)CTRL_arc_width)" color="CTRL_arc_col_r,CTRL_arc_col_g,CTRL_arc_col_b" rotation="-(IO_joystickDirection-90 - CTRL_arc_width/2)" alpha_multiplier="CTRL_arc_alpha" version="1" autoplay="YES"></stimulus>
+        <stimulus type="circular_fixation_point" tag="arcMask" color="0.5,0.5,0.5" trigger_width="CTRL_arcMask_size" trigger_watch_x="IO_cursor_x" trigger_watch_y="IO_cursor_x" trigger_flag="CTRL_arcMask_flag" x_size="CTRL_arcMask_size" y_size="CTRL_arcMask_size" x_position="0" y_position="0" rotation="0" alpha_multiplier="1"></stimulus>
+        <stimulus type="text" tag="feedback_accuracy" text="format(&quot;Accuracy: %d&quot;, INFO_cursor_accuracyDisplay)" font_name="Arial" font_size="35" text_alignment="left" color="1,1,1" x_size="10" y_size="10" x_position="-10" y_position="4" rotation="0" alpha_multiplier="1"></stimulus>
+        <stimulus type="text" tag="feedback_distance" text="format(&quot;Dist2Center: %d&quot;, (round(IO_cursor_distance2center*100)/100))" font_name="Arial" font_size="35" text_alignment="left" color="1,1,1" x_size="10" y_size="10" x_position="-10" y_position="3" rotation="0" alpha_multiplier="1"></stimulus>
+        <stimulus type="text" tag="feedback_reward" text="format(&quot;Reward: %d EUR&quot;, TMP_ExtraCash)" font_name="Arial" font_size="35" text_alignment="left" color="1,0,0" x_size="10" y_size="10" x_position="0" y_position="0" rotation="0" alpha_multiplier="1"></stimulus>
+        <stimulus type="circular_fixation_point" tag="target1" color="1,0,0" trigger_width="CTRL_target_size +CTRL_target_collision_area" trigger_watch_x="IO_cursor_x" trigger_watch_y="IO_cursor_y" trigger_flag="CTRL_target_flag1" x_size="CTRL_target_size" y_size="CTRL_target_size" x_position="0" y_position="9" rotation="0" alpha_multiplier="0"></stimulus>
+        <stimulus type="circular_fixation_point" tag="target2" color="1,0,0" trigger_width="CTRL_target_size + CTRL_target_collision_area" trigger_watch_x="IO_cursor_x" trigger_watch_y="IO_cursor_y" trigger_flag="CTRL_target_flag2" x_size="CTRL_target_size" y_size="CTRL_target_size" x_position="9" y_position="0" rotation="0" alpha_multiplier="0"></stimulus>
+        <stimulus type="circular_fixation_point" tag="target3" color="1,0,0" trigger_width="CTRL_target_size + CTRL_target_collision_area" trigger_watch_x="IO_cursor_x" trigger_watch_y="IO_cursor_y" trigger_flag="CTRL_target_flag3" x_size="CTRL_target_size" y_size="CTRL_target_size" x_position="0" y_position="-9" rotation="0" alpha_multiplier="0"></stimulus>
+        <stimulus type="circular_fixation_point" tag="target4" color="1,0,0" trigger_width="CTRL_target_size + CTRL_target_collision_area" trigger_watch_x="IO_cursor_x" trigger_watch_y="IO_cursor_y" trigger_flag="CTRL_target_flag4" x_size="CTRL_target_size" y_size="CTRL_target_size" x_position="-9" y_position="0" rotation="0" alpha_multiplier="0"></stimulus>
+        <stimulus type="image_file" tag="target_coin1" path="./coin.png" x_size="2" y_size="2" x_position="0" y_position="9" rotation="0" alpha_multiplier="1" deferred="NO"></stimulus>
+        <stimulus type="image_file" tag="target_coin2" path="./coin.png" x_size="2" y_size="2" x_position="9" y_position="0" rotation="0" alpha_multiplier="1" deferred="NO"></stimulus>
+        <stimulus type="image_file" tag="target_coin3" path="./coin.png" x_size="2" y_size="2" x_position="0" y_position="-9" rotation="0" alpha_multiplier="1" deferred="NO"></stimulus>
+        <stimulus type="image_file" tag="target_coin4" path="./coin.png" x_size="2" y_size="2" x_position="-9" y_position="0" rotation="0" alpha_multiplier="1" deferred="NO"></stimulus>
+    </stimuli>
+    <filters tag="Filters"></filters>
+    <optimizers tag="Optimizers">
+        <filter type="Staircase_Optimizer" tag="SC_noise" input="SC_in" output="SC_out" steps_csv="SC_steps" index="SC_index_starting" leftCriterion="SC_left_rate" version="INFO_task" rightCriterion="SC_right_rate"></filter>
+    </optimizers>
+    <resources tag="Resources"></resources>
+    <experiment tag="New Experiment" full_name="" description="">
+        <protocol tag="Calibration-9p" nsamples="1" sampling_method="cycles" selection="sequential">
+            <action type="start_device_IO" tag="Start (Eyelink)" device="Eyelink"></action>
+            <block tag="Calibration Block" nsamples="1" sampling_method="cycles" selection="sequential">
+                <trial tag="Calibration Trial" nsamples="1" sampling_method="cycles" selection="sequential">
+                    <action tag="Clear Calibration" type="clear_calibration" calibrator="EyeCalibrator"></action>
+                    <action type="queue_stimulus" tag="Queue (Background)" stimulus="Background"></action>
+                    <trial tag="Calibration List" nsamples="1" sampling_method="cycles" selection="random_without_replacement">
+                        <range_replicator tag="Califixpoint position x" from="-10" to="10" step="5" variable="local_posX">
+                            <range_replicator tag="Califixpoint position y" from="-10" to="10" step="5" variable="local_posY">
+                                <task_system tag="Calibration System" interruptible="YES">
+                                    <task_system_state tag="BEGIN_STATE_SYSTEM" interruptible="YES">
+                                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                        <action type="assignment" tag="fixationPoint_posX = local_posX" variable="fixationPoint_posX" value="local_posX"></action>
+                                        <action type="assignment" tag="fixationPoint_posY = local_posY" variable="fixationPoint_posY" value="local_posY"></action>
+                                        <action type="report" tag="log( &quot;Calibration Trial; Fixation point at x= &quot; )" message="Calibration Trial; Fixation point at x= $fixationPoint_posX , y= $fixationPoint_posY , fixation width = $CTRL_fixationWidth_dva"></action>
+                                        <action type="queue_stimulus" tag="queue( fixationPoint )" stimulus="fixationPoint"></action>
+                                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                        <transition type="direct" tag="always goto SHOW_CALIBRATION_POINT" target="SHOW_CALIBRATION_POINT"></transition>
+                                    </task_system_state>
+                                    <task_system_state tag="SHOW_CALIBRATION_POINT" interruptible="YES">
+                                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                        <action type="report" tag="log( &quot;Calibration Trial; Fixation point at x= &quot; )" message="Calibration Trial; Fixation point at x= $fixationPoint_posX , y= $fixationPoint_posY , fixation width = $CTRL_fixationWidth_dva"></action>
+                                        <action tag="update stimulus display" type="update_stimulus_display" predicted_output_time=""></action>
+                                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                        <transition type="conditional" tag="if( IO_fixationPoint ) goto PRE_AQUIRE" condition="IO_fixationPoint" target="PRE_AQUIRE"></transition>
+                                    </task_system_state>
+                                    <task_system_state tag="PRE_AQUIRE" interruptible="YES">
+                                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                        <action type="report" tag="log( &quot;Pre Fixation Time ...&quot; )" message="Pre Fixation Time ..."></action>
+                                        <action type="start_timer" tag="start( PreAquireTimer = (250)ms @base )" timer="PreAquireTimer" timebase="" duration="250" duration_units="ms"></action>
+                                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                        <transition type="conditional" tag="if( IO_fixationPoint == 0 ) goto SHOW_CALIBRATION_POINT" condition="IO_fixationPoint == 0" target="SHOW_CALIBRATION_POINT"></transition>
+                                        <transition type="timer_expired" tag="if( PreAquireTimer ) goto CALIBRATION_AQUIRE" target="CALIBRATION_AQUIRE" timer="PreAquireTimer"></transition>
+                                    </task_system_state>
+                                    <task_system_state tag="CALIBRATION_AQUIRE" interruptible="YES">
+                                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                        <action type="start_timer" tag="start( fixation_timer = (1000)ms @base )" timer="fixation_timer" timebase="" duration="1000" duration_units="ms"></action>
+                                        <action tag="Begin Averaged Calibration Sample" type="begin_calibration_average" calibrator="EyeCalibrator"></action>
+                                        <action type="report" tag="log( &quot;====== GETTING SAMPLES ======&quot; )" message="====== GETTING SAMPLES ======"></action>
+                                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                        <transition type="conditional" tag="if( NOT( IO_fixationPoint ) ) goto FIXATION_BREAK" condition="NOT( IO_fixationPoint )" target="FIXATION_BREAK"></transition>
+                                        <transition type="timer_expired" tag="if( fixation_timer ) goto ACCEPT_SAMPLES" target="ACCEPT_SAMPLES" timer="fixation_timer"></transition>
+                                    </task_system_state>
+                                    <task_system_state tag="ACCEPT_SAMPLES" interruptible="YES">
+                                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                        <action tag="End Averaged Calibration Sample" type="end_calibration_average_and_take_sample" calibrator="EyeCalibrator" calibratable_object="fixationPoint"></action>
+                                        <action type="dequeue_stimulus" tag="dequeue( fixationPoint )" stimulus="fixationPoint"></action>
+                                        <action tag="update stimulus display" type="update_stimulus_display" predicted_output_time=""></action>
+                                        <action tag="Accept Trial" type="accept_selections" selection="Calibration List"></action>
+                                        <action type="report" tag="log( &quot;Fixation Maintained -- Trial Accepted !!&quot; )" message="Fixation Maintained -- Trial Accepted !!!"></action>
+                                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                        <transition type="direct" tag="always goto EXIT_STATE_SYSTEM" target="EXIT_STATE_SYSTEM"></transition>
+                                    </task_system_state>
+                                    <task_system_state tag="FIXATION_BREAK" interruptible="YES">
+                                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                        <action tag="End Averaged Calibration Sample" type="end_calibration_average_and_ignore" calibrator="EyeCalibrator"></action>
+                                        <action type="dequeue_stimulus" tag="dequeue( fixationPoint )" stimulus="fixationPoint"></action>
+                                        <action tag="update stimulus display" type="update_stimulus_display" predicted_output_time=""></action>
+                                        <action tag="Reject Trial" type="reject_selections" selection="Calibration List"></action>
+                                        <action type="report" tag="log( &quot;Fixation Lost -- Trial Rejected.&quot; )" message="Fixation Lost -- Trial Rejected."></action>
+                                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                        <transition type="direct" tag="always goto EXIT_STATE_SYSTEM" target="EXIT_STATE_SYSTEM"></transition>
+                                    </task_system_state>
+                                    <task_system_state tag="EXIT_STATE_SYSTEM" interruptible="YES">
+                                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                        <action type="wait" tag="wait( 1000ms )" duration="1000" duration_units="ms"></action>
+                                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                        <transition tag="return to parent task system" type="yield"></transition>
+                                    </task_system_state>
+                                </task_system>
+                            </range_replicator>
+                        </range_replicator>
+                    </trial>
+                    <action tag="Update Calibration" type="update_calibration" calibrator="EyeCalibrator"></action>
+                    <action type="dequeue_stimulus" tag="Dequeue(Background)" stimulus="Background"></action>
+                    <action tag="Update stimulus display" type="update_stimulus_display" predicted_output_time=""></action>
+                </trial>
+            </block>
+            <action type="stop_device_IO" tag="Stop (Eyelink)" device="Eyelink"></action>
+        </protocol>
+        <protocol tag="Pre-test SNR" nsamples="1" sampling_method="cycles" selection="sequential" interruptible="YES">
+            <action type="start_device_IO" tag="Start (Eyelink)" device="Eyelink"></action>
+            <action tag="Queue background" type="queue_stimulus" stimulus="Background"></action>
+            <action tag="Start mIO" type="start_device_IO" device="mIO"></action>
+            <action tag="Live Queue cursor" type="live_queue_stimulus" stimulus="cursor"></action>
+            <action tag="Update Display" type="update_stimulus_display"></action>
+            <action type="if" tag="Set Parameter" condition="1">
+                <action type="assignment" tag="Set CTRL_PreSNR_ResponseWindow" variable="CTRL_PreSNR_ResponseWindow" value="3000"></action>
+                <action type="assignment" tag="Set CTRL_PreSNR_TargetDuration" variable="CTRL_PreSNR_TargetDuration" value="1000"></action>
+                <action type="assignment" tag="Set Staircase Starting point" variable="SC_index_starting" value="1"></action>
+            </action>
+            <trial tag="Main Task System" nsamples="1" sampling_method="cycles" selection="sequential" interruptible="YES">
+                <task_system tag="LOOP" interruptible="YES">
+                    <task_system_state tag="Wait for joystick" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action tag="Queue start_area" type="queue_stimulus" stimulus="start_area"></action>
+                        <action type="assignment" tag="Update Cursor Position X" variable="IO_cursor_x" value="-CTRL_Xmax * IO_joystickX_calib"></action>
+                        <action type="assignment" tag="Update Cursor Position Y" variable="IO_cursor_y" value="CTRL_Ymax * IO_joystickY_calib"></action>
+                        <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If Cursor inside start area, go to New Trial" condition="IO_start_area_flag" target="New Trial"></transition>
+                        <transition type="conditional" tag="If Cursor inside start area, go to Wait For Joystick" condition="IO_start_area_flag == 0" target="Wait for joystick"></transition>
+                    </task_system_state>
+                    <task_system_state tag="New Trial" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="Set Matlab variables" condition="1">
+                            <action type="assignment" tag="set ML sync" variable="ML_sync" value="1"></action>
+                            <action type="assignment" tag="set ML trial start" variable="ML_trialStart" value="ML_trialStart + 1"></action>
+                            <action type="assignment" tag="Log task name" variable="INFO_task" value="&quot;pre-test-SNR&quot;"></action>
+                        </action>
+                        <action tag="Live Queue RDP" type="live_queue_stimulus" stimulus="RDP"></action>
+                        <action type="assignment" tag="Select RDP direction[90,180,270,360]" variable="RDP_direction" value="disc_rand(0,3)*90"></action>
+                        <action type="assignment" tag="Set RDP coherence to SC_out" variable="RDP_coherence" value="SC_out"></action>
+                        <action type="assignment" tag="Set Show Target to 0" variable="CTRL_target_ON" value="0"></action>
+                        <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <action type="start_timer" tag="Start Timer (TargetTimer)" timer="TargetTimer" timebase="" duration="CTRL_PreSNR_TargetDuration" duration_units="ms"></action>
+                        <action type="report" tag="Report trial start" message="===== TRIAL $ML_trialStart STARTS====="></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Go to update stimulus" target="Update Stimulus"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Update Stimulus" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="start_timer" tag="Start Timer (FrameTimer)" timer="FrameTimer" timebase="" duration="16" duration_units="ms"></action>
+                        <action type="assignment" tag="Update Cursor Position X" variable="IO_cursor_x" value="-CTRL_Xmax * IO_joystickX_calib"></action>
+                        <action type="assignment" tag="Update Cursor Position Y" variable="IO_cursor_y" value="CTRL_Ymax * IO_joystickY_calib"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="timer_expired" tag="If FrameTimer Expired, Transition to Update Stimulus" target="Update Stimulus" timer="FrameTimer"></transition>
+                        <transition type="conditional" tag="if TargetTimer Expired go to Show Target" condition="timer_expired(TargetTimer)" target="Show Target"></transition>
+                        <transition type="conditional" tag="if start_area left go to false alarm" condition="IO_start_area_flag == 0" target="False Alarm"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Show Target" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="report" tag="Report" message="-- Show Targets"></action>
+                        <action tag="Live Queue cursor" type="live_queue_stimulus" stimulus="cursor"></action>
+                        <action type="assignment" tag="Set Show Target to 1" variable="CTRL_target_ON" value="1"></action>
+                        <action tag="Dequeue start_area" type="dequeue_stimulus" stimulus="start_area"></action>
+                        <action tag="Dequeue RDP" type="dequeue_stimulus" stimulus="RDP"></action>
+                        <action type="if" tag="Queue Targets" condition="1">
+                            <action tag="Live Queue Target 1" type="live_queue_stimulus" stimulus="target1"></action>
+                            <action tag="Live Queue Target 2" type="live_queue_stimulus" stimulus="target2"></action>
+                            <action tag="Live Queue Target 3" type="live_queue_stimulus" stimulus="target3"></action>
+                            <action tag="Live Queue Target 4" type="live_queue_stimulus" stimulus="target4"></action>
+                            <action tag="Live Queue Target_coin1" type="live_queue_stimulus" stimulus="target_coin1"></action>
+                            <action tag="Live Queue Target_coin 2" type="live_queue_stimulus" stimulus="target_coin2"></action>
+                            <action tag="Live Queue Target_coin 3" type="live_queue_stimulus" stimulus="target_coin3"></action>
+                            <action tag="Live Queue Target_coin 4" type="live_queue_stimulus" stimulus="target_coin4"></action>
+                        </action>
+                        <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <action type="start_timer" tag="Start ResponseTimer" timer="ResponseTimer" timebase="" duration="CTRL_PreSNR_ResponseWindow" duration_units="ms"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to ..." target="Response Window"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Response Window" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="start_timer" tag="Start Timer (FrameTimer)" timer="RW_FrameTimer" timebase="" duration="16" duration_units="ms"></action>
+                        <action type="assignment" tag="Update Cursor Position X" variable="IO_cursor_x" value="-CTRL_Xmax * IO_joystickX_calib"></action>
+                        <action type="assignment" tag="Update Cursor Position Y" variable="IO_cursor_y" value="CTRL_Ymax * IO_joystickY_calib"></action>
+                        <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If correct target hit" condition="(CTRL_target_flag1 #AND RDP_direction ==0) #OR (CTRL_target_flag2 #AND RDP_direction ==90) #OR (CTRL_target_flag3 #AND RDP_direction ==180) #OR (CTRL_target_flag4 #AND RDP_direction ==270)" target="Hit"></transition>
+                        <transition type="conditional" tag="If wrong target, go to error" condition="(CTRL_target_flag1 #AND RDP_direction !=0) #OR (CTRL_target_flag2 #AND RDP_direction !=90) #OR (CTRL_target_flag3 #AND RDP_direction !=180) #OR (CTRL_target_flag4 #AND RDP_direction !=270)" target="Error"></transition>
+                        <transition type="timer_expired" tag="If FrameTimer Expired, Transition to Response Window" target="Response Window" timer="RW_FrameTimer"></transition>
+                        <transition type="timer_expired" tag="If ResponseTimer Expired, Transition to Miss" target="Miss" timer="ResponseTimer"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Hit" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="report" tag="Report Hit" message="++ outcome: Hit"></action>
+                        <action type="assignment" tag="Set Trial outcome to hit" variable="TRIAL_outcome" value="&quot;hit&quot;"></action>
+                        <action type="assignment" tag="Set SC_in" variable="SC_in" value="1"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to end trial" target="End Trial"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Miss" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="report" tag="Report Miss" message="++ outcome: Miss"></action>
+                        <action type="assignment" tag="Set Trial outcome to miss" variable="TRIAL_outcome" value="&quot;miss&quot;"></action>
+                        <action type="assignment" tag="Set SC_in 0" variable="SC_in" value="0"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to end trial" target="End Trial"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Error" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="report" tag="Report Error" message="++ outcome: Error"></action>
+                        <action type="assignment" tag="Set Trial outcome to error" variable="TRIAL_outcome" value="&quot;error&quot;"></action>
+                        <action type="assignment" tag="Set SC_in 0" variable="SC_in" value="0"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to end trial" target="End Trial"></transition>
+                    </task_system_state>
+                    <task_system_state tag="False Alarm" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="report" tag="Report False alarm" message="++ outcome: False alarm"></action>
+                        <action type="assignment" tag="Set Trial outcome to false alarm" variable="TRIAL_outcome" value="&quot;false alarm&quot;"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to end trial" target="End Trial"></transition>
+                    </task_system_state>
+                    <task_system_state tag="End Trial" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="Dequeue Targets" condition="1">
+                            <action tag="Dequeue Target 1" type="dequeue_stimulus" stimulus="target1"></action>
+                            <action tag="Dequeue Target 2" type="dequeue_stimulus" stimulus="target2"></action>
+                            <action tag="Dequeue Target 3" type="dequeue_stimulus" stimulus="target3"></action>
+                            <action tag="Dequeue Target 4" type="dequeue_stimulus" stimulus="target4"></action>
+                            <action tag="Dequeue Target_coin 1" type="dequeue_stimulus" stimulus="target_coin1"></action>
+                            <action tag="Dequeue Target_coin 2" type="dequeue_stimulus" stimulus="target_coin2"></action>
+                            <action tag="Dequeue Target_coin 3" type="dequeue_stimulus" stimulus="target_coin3"></action>
+                            <action tag="Dequeue Target_coin 4" type="dequeue_stimulus" stimulus="target_coin4"></action>
+                            <action tag="Dequeue Start Area" type="dequeue_stimulus" stimulus="start_area"></action>
+                            <action tag="Dequeue RDP" type="dequeue_stimulus" stimulus="RDP"></action>
+                            <action type="assignment" tag="Reset Target 1 Flag" variable="CTRL_target_flag1" value="0"></action>
+                            <action type="assignment" tag="Reset Target 2 Flag" variable="CTRL_target_flag2" value="0"></action>
+                            <action type="assignment" tag="Reset Target 3 Flag" variable="CTRL_target_flag3" value="0"></action>
+                            <action type="assignment" tag="Reset Target 4 Flag" variable="CTRL_target_flag4" value="0"></action>
+                        </action>
+                        <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <action type="if" tag="Set Matlab variables" condition="1">
+                            <action type="assignment" tag="set ML sync" variable="ML_sync" value="0"></action>
+                            <action type="assignment" tag="set ML trial end" variable="ML_trialEnd" value="ML_trialStart"></action>
+                        </action>
+                        <action type="report" tag="Report end of cycle" message="END OF TRIAL $ML_trialEnd **********************"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to Wait for joystick" target="Wait for joystick"></transition>
+                    </task_system_state>
+                </task_system>
+            </trial>
+            <action type="stop_device_IO" tag="Stop (Eyelink)" device="Eyelink"></action>
+        </protocol>
+        <protocol tag="CPR_steady_Training" nsamples="1" sampling_method="cycles" selection="sequential" interruptible="YES">
+            <action type="start_device_IO" tag="Start (Eyelink)" device="Eyelink"></action>
+            <action tag="Start Joystick" type="start_device_IO" device="mIO"></action>
+            <action tag="Queue Background" type="live_queue_stimulus" stimulus="Background"></action>
+            <action tag="Live Queue Cursor" type="live_queue_stimulus" stimulus="cursor"></action>
+            <action tag="Live Queue Feedback Accuray" type="live_queue_stimulus" stimulus="feedback_accuracy"></action>
+            <action tag="Live Queue Feedback Distance" type="live_queue_stimulus" stimulus="feedback_distance"></action>
+            <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+            <action type="if" tag="Paradigm settings" condition="1">
+                <action type="assignment" tag="Set CTRL_RequiredHitNo" variable="CTRL_RequiredHitNo" value="10"></action>
+                <action type="assignment" tag="Set CTRL_snr_min" variable="CTRL_snr_min" value=".9"></action>
+                <action type="assignment" tag="Set CTRL_snr_max" variable="CTRL_snr_max" value=".95"></action>
+                <action type="assignment" tag="Set CTRL_target_duration" variable="CTRL_target_duration" value="3000"></action>
+                <action type="assignment" tag="Set CTRL_HoldTarget_ms" variable="CTRL_HoldTarget_ms" value="500"></action>
+                <action type="assignment" tag="Set CTRL_steadyState_min" variable="CTRL_steadyState_min" value="1500"></action>
+                <action type="assignment" tag="Set CTRL_steadyState_max" variable="CTRL_steadyState_max" value="3000"></action>
+                <action type="assignment" tag="Set CTRL_steadyState_beforeTarget" variable="CTRL_steadyState_beforeTarget" value="750"></action>
+            </action>
+            <action type="start_timer" tag="Initialize ColorChangeTimer" timer="ColorChangeTimer" timebase="" duration="0.0" duration_units="ms"></action>
+            <trial tag="Trial structure" nsamples="1" sampling_method="cycles" selection="sequential" interruptible="YES">
+                <task_system tag="LOOP" interruptible="YES">
+                    <task_system_state tag="Wait for Joystick" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="start_timer" tag="Start FrameTimer" timer="FrameTimer" timebase="" duration="CTRL_frameTimer_duration" duration_units="ms"></action>
+                        <action type="if" tag="Convert cursor position" condition="1">
+                            <action type="assignment" tag="... X" variable="IO_cursor_x" value="-(CTRL_Xmax * IO_joystickX_calib)"></action>
+                            <action type="assignment" tag="... Y" variable="IO_cursor_y" value="CTRL_Ymax * IO_joystickY_calib"></action>
+                        </action>
+                        <action tag="Queue start_area" type="queue_stimulus" stimulus="start_area"></action>
+                        <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If Cursor inside start area, go to New Trial" condition="IO_start_area_flag == true" target="New Trial"></transition>
+                        <transition type="timer_expired" tag="If FrameTimer Expired, Transition to Update Stimuli" target="Wait for Joystick" timer="FrameTimer"></transition>
+                    </task_system_state>
+                    <task_system_state tag="New Trial" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="Set Matlab variables" condition="1">
+                            <action type="assignment" tag="set ML sync" variable="ML_sync" value="1"></action>
+                            <action type="assignment" tag="set ML trial start" variable="ML_trialStart" value="ML_trialStart + 1"></action>
+                            <action type="assignment" tag="Log task name" variable="INFO_task" value="&quot;Steady_Flip&quot;"></action>
+                        </action>
+                        <action type="if" tag="Set RDP parameters" condition="1">
+                            <action type="assignment" tag="Set RDP direction" variable="RDP_direction" value="disc_rand(0,359)"></action>
+                            <action type="assignment" tag="Set RDP Speed to 4" variable="RDP_speed" value="4"></action>
+                            <action type="assignment" tag="Set RDP coherence" variable="RDP_coherence" value="rand(CTRL_snr_min, CTRL_snr_max)"></action>
+                        </action>
+                        <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <action type="assignment" tag="Draw CTRL_trial_duration" variable="CTRL_trial_duration" value="disc_rand(CTRL_trial_min, CTRL_trial_max)"></action>
+                        <action type="start_timer" tag="Start TrialTimer" timer="TrialTimer" timebase="" duration="CTRL_trial_duration" duration_units="ms"></action>
+                        <action type="report" tag="Report trial start" message="===== TRIAL $ML_trialStart STARTS ====="></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to Show Stimuli" target="Show Stimuli"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Show Stimuli" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="Live Queue Stimuli" condition="1">
+                            <action tag="Live Queue Arc" type="live_queue_stimulus" stimulus="arc"></action>
+                            <action tag="Live Queue ArcMask" type="live_queue_stimulus" stimulus="arcMask"></action>
+                            <action tag="Live Queue RDP" type="live_queue_stimulus" stimulus="RDP"></action>
+                            <action tag="Live Queue Start Area" type="live_queue_stimulus" stimulus="start_area"></action>
+                            <action tag="Live Queue Cursor" type="live_queue_stimulus" stimulus="cursor"></action>
+                            <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        </action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition tag="Go to Set up Target" type="direct" target="Set up Target"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Set up Target" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="assignment" tag="Draw CTRL_Time2Target" variable="CTRL_Time2Target" value="1500 * disc_rand(1,5)"></action>
+                        <action type="start_timer" tag="Start TargetTimer" timer="TargetTimer" timebase="" duration="CTRL_Time2Target" duration_units="ms"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If required number of targets collected, end paradigm" condition="INFO_HitCounter &gt;= CTRL_RequiredHitNo" target="End Trial"></transition>
+                        <transition type="direct" tag="Always Go to Set up steady state" target="Set up steady state"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Set up steady state" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="assignment" tag="Set Steady State Duration" variable="CTRL_SteadyStateDuration" value="disc_rand(1000,3000)"></action>
+                        <action type="start_timer" tag="Start SteadyStateDurationTimer" timer="SteadyStateDurationTimer" timebase="" duration="CTRL_SteadyStateDuration" duration_units="ms"></action>
+                        <action type="start_timer" tag="Start SteadyStateMinDurationTimer" timer="SteadyStateMinDurationTimer" timebase="" duration="CTRL_steadyState_beforeTarget" duration_units="ms"></action>
+                        <action type="assignment" tag="SteadyState start timestamp" variable="TMP_steady_ts" value="now()"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to Update Stimuli" target="Update Stimuli"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Update Stimuli" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="start_timer" tag="Start FrameTimer" timer="FrameTimer" timebase="" duration="CTRL_frameTimer_duration" duration_units="ms"></action>
+                        <action type="if" tag="IF ColorChangeTimer expired..." condition="timer_expired(ColorChangeTimer)">
+                            <action type="assignment" tag="start_area color to black" variable="CTRL_start_area_col_g" value="0"></action>
+                            <action tag="Dequeue reward feedback" type="dequeue_stimulus" stimulus="feedback_reward"></action>
+                        </action>
+                        <action type="if" tag="Convert cursor position" condition="1">
+                            <action type="assignment" tag="... X" variable="IO_cursor_x" value="-(CTRL_Xmax * IO_joystickX_calib)"></action>
+                            <action type="assignment" tag="... Y" variable="IO_cursor_y" value="CTRL_Ymax * IO_joystickY_calib"></action>
+                        </action>
+                        <action type="if" tag="Update trigger boundaries" condition="1">
+                            <action type="assignment" tag="Update CTRL_arc_trigger_min" variable="CTRL_arc_trigger_min" value="(((TMP_stimDir - (CTRL_arc_width/2) + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                            <action type="assignment" tag="Update CTRL_arc_trigger_max" variable="CTRL_arc_trigger_max" value="(((TMP_stimDir + (CTRL_arc_width/2) + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                        </action>
+                        <action type="if" tag="Calculate Accurary" condition="1">
+                            <action type="assignment" tag="Assign TMP_RDPdir" variable="TMP_RDPdir" value="RDP_direction"></action>
+                            <action type="if" tag="If TMP_RDPdir between 0:359 ..." condition="TMP_RDPdir &gt;= 0 &amp;&amp; TMP_RDPdir &lt; 359">
+                                <action type="assignment" tag="Set TMP_stimDir" variable="TMP_stimDir" value="TMP_RDPdir"></action>
+                            </action>
+                            <action type="if" tag="If TMP_RDPdir &gt; 359..." condition="TMP_RDPdir &gt; 359">
+                                <action type="assignment" tag="Correct TMP_RDPdir value to match angle 0:359" variable="TMP_stimDir" value="TMP_RDPdir - 359"></action>
+                            </action>
+                            <action type="if" tag="If TMP_RDPdir &lt; 0..." condition="TMP_RDPdir &lt; 0">
+                                <action type="assignment" tag="Correct TMP_RDPdir value to match angle 0:359" variable="TMP_stimDir" value="TMP_RDPdir + 359"></action>
+                            </action>
+                            <action type="assignment" tag="Update response accuracy" variable="IO_cursor_accuracy" value="abs(1 - abs(TMP_stimDir - (IO_joystickDirection - 90)) / 180)"></action>
+                            <action type="assignment" tag="Round response accuracy for display" variable="INFO_cursor_accuracyDisplay" value="round(IO_cursor_accuracy * 100) / 100"></action>
+                        </action>
+                        <action type="if" tag="Calculate cursor2target distance" condition="1">
+                            <action type="assignment" tag="Normalise joystick direction" variable="TMP_normJoyDir" value="(((IO_joystickDirection-90) + (180-TMP_stimDir) + 360) % 360) "></action>
+                            <action type="assignment" tag="Normalise RDP direction" variable="TMP_normStimDir" value="(((TMP_stimDir + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                            <action type="assignment" tag="Difference Joystick - Cursor" variable="TMP_joyDeviation" value="abs(TMP_normJoyDir - TMP_normStimDir)"></action>
+                            <action type="assignment" tag="Calculate distance from center" variable="IO_cursor_distance2center" value="sqrt(pow(IO_cursor_y,2) + pow(IO_cursor_x,2))"></action>
+                        </action>
+                        <action type="if" tag="Set arc width" condition="1">
+                            <action type="if" tag="IF IO_cursor_distance2center &lt;= RDP_radius" condition="IO_cursor_distance2center &lt;= RDP_radius">
+                                <action type="assignment" tag="Set to IO_cursor_distance2center" variable="TMP_scalingFactor" value="IO_cursor_distance2center"></action>
+                            </action>
+                            <action type="if" tag="IF IO_cursor_distance2center &gt; RDP_radius" condition="IO_cursor_distance2center &gt; RDP_radius">
+                                <action type="assignment" tag="Set to RDP_radius" variable="TMP_scalingFactor" value="RDP_radius"></action>
+                            </action>
+                            <action type="assignment" tag="Calculate arc width" variable="CTRL_arc_width" value="180 * (abs(TMP_scalingFactor - RDP_radius)/RDP_radius)"></action>
+                        </action>
+                        <action type="if" tag="Set luminance" condition="1">
+                            <action type="assignment" tag="Set arc luminance" variable="CTRL_arc_alpha" value="IO_cursor_distance2center / RDP_radius"></action>
+                            <action type="assignment" tag="Set target luminance" variable="CTRL_target_alpha" value="IO_cursor_distance2center / RDP_radius"></action>
+                        </action>
+                        <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If outside RDP patch, abort trial" condition="IO_cursor_distance2center &gt; RDP_radius" target="Abort"></transition>
+                        <transition type="conditional" tag="If TargetTimer expired, present target" condition="timer_expired(TargetTimer) &amp;&amp; timer_expired(SteadyStateMinDurationTimer)" target="Target presentation"></transition>
+                        <transition type="timer_expired" tag="If SteadyStateDurationTimer Expired, Transition to Direction switch" target="Direction switch" timer="SteadyStateDurationTimer"></transition>
+                        <transition type="timer_expired" tag="If TrialTimer Expired, Transition to End trial" target="End Trial" timer="TrialTimer"></transition>
+                        <transition type="timer_expired" tag="If FrameTimer Expired, Transition to Update Stimuli" target="Update Stimuli" timer="FrameTimer"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Direction switch" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="assignment" tag="Roll TMP_dice" variable="TMP_dice" value="disc_rand(0,1)"></action>
+                        <action type="if" tag="If TMP_dice == 1" condition="TMP_dice == 1">
+                            <action type="assignment" tag="Assign new RDP_direction [+]" variable="RDP_direction" value="RDP_direction + CTRL_directionChange_list[disc_rand(0,3)]"></action>
+                        </action>
+                        <action type="if" tag="If TMP_dice == 0" condition="TMP_dice == 0">
+                            <action type="assignment" tag="Assign new RDP_direction [-]" variable="RDP_direction" value="RDP_direction - CTRL_directionChange_list[disc_rand(0,3)]"></action>
+                        </action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to Set up steady state" target="Set up steady state"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Target presentation" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="Determine target coordinates" condition="1">
+                            <action type="assignment" tag="Calculate CTRL_target_x" variable="CTRL_target_x" value="sin((RDP_direction)*(pi/180))*(RDP_radius + (CTRL_target_size/2))"></action>
+                            <action type="assignment" tag="Calculate CTRL_target_y" variable="CTRL_target_y" value="cos((RDP_direction)*(pi/180))*(RDP_radius+ (CTRL_target_size/2))"></action>
+                        </action>
+                        <action tag="Live Queue target" type="live_queue_stimulus" stimulus="target"></action>
+                        <action type="assignment" tag="Set target indicator to 1" variable="CTRL_target_ON" value="1"></action>
+                        <action type="start_timer" tag="Start TargetDurationTimer" timer="TargetDurationTimer" timebase="" duration="CTRL_target_duration" duration_units="ms"></action>
+                        <action type="report" tag="Report target" message="--- SHOW TARGET ---"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to Check if target detected" target="Check if target detected"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Check if target detected" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="start_timer" tag="Start FrameTimer" timer="FrameTimer" timebase="" duration="CTRL_frameTimer_duration" duration_units="ms"></action>
+                        <action type="if" tag="IF start_area still green..." condition="CTRL_start_area_col_g == 1">
+                            <action type="assignment" tag="...change color to clack" variable="CTRL_start_area_col_g" value="0"></action>
+                            <action tag="Dequeue reward feedback" type="dequeue_stimulus" stimulus="feedback_reward"></action>
+                        </action>
+                        <action type="if" tag="Convert cursor position" condition="1">
+                            <action type="assignment" tag="... X" variable="IO_cursor_x" value="-(CTRL_Xmax * IO_joystickX_calib)"></action>
+                            <action type="assignment" tag="... Y" variable="IO_cursor_y" value="CTRL_Ymax * IO_joystickY_calib"></action>
+                        </action>
+                        <action type="if" tag="Update trigger boundaries" condition="1">
+                            <action type="assignment" tag="Update CTRL_arc_trigger_min" variable="CTRL_arc_trigger_min" value="(((TMP_stimDir - (CTRL_arc_width/2) + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                            <action type="assignment" tag="Update CTRL_arc_trigger_max" variable="CTRL_arc_trigger_max" value="(((TMP_stimDir + (CTRL_arc_width/2) + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                        </action>
+                        <action type="if" tag="Calculate Accurary" condition="1">
+                            <action type="assignment" tag="Assign TMP_RDPdir" variable="TMP_RDPdir" value="RDP_direction"></action>
+                            <action type="if" tag="If TMP_RDPdir between 0:359 ..." condition="TMP_RDPdir &gt;= 0 &amp;&amp; TMP_RDPdir &lt; 359">
+                                <action type="assignment" tag="Set TMP_stimDir" variable="TMP_stimDir" value="TMP_RDPdir"></action>
+                            </action>
+                            <action type="if" tag="If TMP_RDPdir &gt; 359..." condition="TMP_RDPdir &gt; 359">
+                                <action type="assignment" tag="Correct TMP_RDPdir value to match angle 0:359" variable="TMP_stimDir" value="TMP_RDPdir - 359"></action>
+                            </action>
+                            <action type="if" tag="If TMP_RDPdir &lt; 0..." condition="TMP_RDPdir &lt; 0">
+                                <action type="assignment" tag="Correct TMP_RDPdir value to match angle 0:359" variable="TMP_stimDir" value="TMP_RDPdir + 359"></action>
+                            </action>
+                            <action type="assignment" tag="Update response accuracy" variable="IO_cursor_accuracy" value="abs(1 - abs(TMP_stimDir - (IO_joystickDirection - 90)) / 180)"></action>
+                            <action type="assignment" tag="Round response accuracy for display" variable="INFO_cursor_accuracyDisplay" value="round(IO_cursor_accuracy * 100) / 100"></action>
+                        </action>
+                        <action type="if" tag="Calculate cursor2target distance" condition="1">
+                            <action type="assignment" tag="Normalise joystick direction" variable="TMP_normJoyDir" value="(((IO_joystickDirection-90) + (180-TMP_stimDir) + 360) % 360) "></action>
+                            <action type="assignment" tag="Normalise RDP direction" variable="TMP_normStimDir" value="(((TMP_stimDir + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                            <action type="assignment" tag="Difference Joystick - Cursor" variable="TMP_joyDeviation" value="abs(TMP_normJoyDir - TMP_normStimDir)"></action>
+                            <action type="assignment" tag="Calculate distance from center" variable="IO_cursor_distance2center" value="sqrt(pow(IO_cursor_y,2) + pow(IO_cursor_x,2))"></action>
+                        </action>
+                        <action type="if" tag="Set arc width" condition="1">
+                            <action type="if" tag="IF IO_cursor_distance2center &lt;= RDP_radius" condition="IO_cursor_distance2center &lt;= RDP_radius">
+                                <action type="assignment" tag="Set to IO_cursor_distance2center" variable="TMP_scalingFactor" value="IO_cursor_distance2center"></action>
+                            </action>
+                            <action type="if" tag="IF IO_cursor_distance2center &gt; RDP_radius" condition="IO_cursor_distance2center &gt; RDP_radius">
+                                <action type="assignment" tag="Set to RDP_radius" variable="TMP_scalingFactor" value="RDP_radius"></action>
+                            </action>
+                            <action type="assignment" tag="Calculate arc width" variable="CTRL_arc_width" value="180 * (abs(TMP_scalingFactor - RDP_radius)/RDP_radius)"></action>
+                        </action>
+                        <action type="if" tag="Set luminance" condition="1">
+                            <action type="assignment" tag="Set arc luminance" variable="CTRL_arc_alpha" value="IO_cursor_distance2center / RDP_radius"></action>
+                            <action type="assignment" tag="Set target luminance" variable="CTRL_target_alpha" value="IO_cursor_distance2center / RDP_radius"></action>
+                        </action>
+                        <action type="if" tag="Check if arc triggered" condition="1">
+                            <action type="assignment" tag="Define flag" variable="CTRL_arc_flag" value="(TMP_normJoyDir &gt;= CTRL_arc_trigger_min) &amp;&amp; (TMP_normJoyDir &lt;=CTRL_arc_trigger_max)"></action>
+                        </action>
+                        <action type="assignment" tag="Update TMP_ExtraCash" variable="TMP_ExtraCash" value="round(( ( (IO_cursor_distance2center/RDP_radius) + IO_cursor_accuracy) /2) *100) /1000"></action>
+                        <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <action type="start_timer" tag="Start HoldDurationTimer" timer="HoldDurationTimer" timebase="" duration="CTRL_HoldTarget_ms" duration_units="ms"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If outside RDP patch, abort trial" condition="IO_cursor_distance2center &gt; RDP_radius" target="Abort"></transition>
+                        <transition type="conditional" tag="If target overlapping with arc go to Hold target" condition="CTRL_arc_flag" target="Hold target"></transition>
+                        <transition type="timer_expired" tag="If TargetDurationTimer Expired, Transition to Miss" target="Miss" timer="TargetDurationTimer"></transition>
+                        <transition type="timer_expired" tag="If FrameTimer Expired, Transition to Update Stimuli" target="Check if target detected" timer="FrameTimer"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Hold target" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="start_timer" tag="Start FrameTimer" timer="FrameTimer" timebase="" duration="CTRL_frameTimer_duration" duration_units="ms"></action>
+                        <action type="if" tag="Convert cursor position" condition="1">
+                            <action type="assignment" tag="... X" variable="IO_cursor_x" value="-(CTRL_Xmax * IO_joystickX_calib)"></action>
+                            <action type="assignment" tag="... Y" variable="IO_cursor_y" value="CTRL_Ymax * IO_joystickY_calib"></action>
+                        </action>
+                        <action type="if" tag="Update trigger boundaries" condition="1">
+                            <action type="assignment" tag="Update CTRL_arc_trigger_min" variable="CTRL_arc_trigger_min" value="(((TMP_stimDir - (CTRL_arc_width/2) + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                            <action type="assignment" tag="Update CTRL_arc_trigger_max" variable="CTRL_arc_trigger_max" value="(((TMP_stimDir + (CTRL_arc_width/2) + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                        </action>
+                        <action type="if" tag="Calculate Accurary" condition="1">
+                            <action type="assignment" tag="Assign TMP_RDPdir" variable="TMP_RDPdir" value="RDP_direction"></action>
+                            <action type="if" tag="If TMP_RDPdir between 0:359 ..." condition="TMP_RDPdir &gt;= 0 &amp;&amp; TMP_RDPdir &lt; 359">
+                                <action type="assignment" tag="Set TMP_stimDir" variable="TMP_stimDir" value="TMP_RDPdir"></action>
+                            </action>
+                            <action type="if" tag="If TMP_RDPdir &gt; 359..." condition="TMP_RDPdir &gt; 359">
+                                <action type="assignment" tag="Correct TMP_RDPdir value to match angle 0:359" variable="TMP_stimDir" value="TMP_RDPdir - 359"></action>
+                            </action>
+                            <action type="if" tag="If TMP_RDPdir &lt; 0..." condition="TMP_RDPdir &lt; 0">
+                                <action type="assignment" tag="Correct TMP_RDPdir value to match angle 0:359" variable="TMP_stimDir" value="TMP_RDPdir + 359"></action>
+                            </action>
+                            <action type="assignment" tag="Update response accuracy" variable="IO_cursor_accuracy" value="abs(1 - abs(TMP_stimDir - (IO_joystickDirection - 90)) / 180)"></action>
+                            <action type="assignment" tag="Round response accuracy for display" variable="INFO_cursor_accuracyDisplay" value="round(IO_cursor_accuracy * 100) / 100"></action>
+                        </action>
+                        <action type="if" tag="Calculate cursor2target distance" condition="1">
+                            <action type="assignment" tag="Normalise joystick direction" variable="TMP_normJoyDir" value="(((IO_joystickDirection-90) + (180-TMP_stimDir) + 360) % 360) "></action>
+                            <action type="assignment" tag="Normalise RDP direction" variable="TMP_normStimDir" value="(((TMP_stimDir + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                            <action type="assignment" tag="Difference Joystick - Cursor" variable="TMP_joyDeviation" value="abs(TMP_normJoyDir - TMP_normStimDir)"></action>
+                            <action type="assignment" tag="Calculate distance from center" variable="IO_cursor_distance2center" value="sqrt(pow(IO_cursor_y,2) + pow(IO_cursor_x,2))"></action>
+                        </action>
+                        <action type="if" tag="Check if arc triggered" condition="1">
+                            <action type="assignment" tag="Define flag" variable="CTRL_arc_flag" value="(TMP_normJoyDir &gt;= CTRL_arc_trigger_min) &amp;&amp; (TMP_normJoyDir &lt;=CTRL_arc_trigger_max)"></action>
+                        </action>
+                        <action type="if" tag="Reduce target luminance" condition="1">
+                            <action type="assignment" tag="Set target luminance" variable="CTRL_target_alpha" value="CTRL_target_alpha - (CTRL_target_alpha/100)"></action>
+                            <action type="if" tag="If CTRL_target_alpha &lt; 0" condition="CTRL_target_alpha &lt; 0">
+                                <action type="assignment" tag="Set target luminance to zero" variable="CTRL_target_alpha" value="0"></action>
+                            </action>
+                        </action>
+                        <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If outside RDP patch, abort trial" condition="IO_cursor_distance2center &gt; RDP_radius" target="Abort"></transition>
+                        <transition type="conditional" tag="If target overlapping with arc -&gt; Hit" condition="CTRL_arc_flag &amp;&amp; timer_expired(HoldDurationTimer)" target="Hit"></transition>
+                        <transition type="conditional" tag="If target lost -&gt; Check if target detected" condition="CTRL_arc_flag == false" target="Check if target detected"></transition>
+                        <transition type="timer_expired" tag="If TargetDurationTimer Expired, Transition to Miss" target="Miss" timer="TargetDurationTimer"></transition>
+                        <transition type="timer_expired" tag="If FrameTimer Expired, Transition to Hold target" target="Hold target" timer="FrameTimer"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Miss" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action tag="Dequeue target" type="dequeue_stimulus" stimulus="target"></action>
+                        <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <action type="assignment" tag="Set target indicator to 0" variable="CTRL_target_ON" value="0"></action>
+                        <action type="assignment" tag="TRIAL_outcome -&gt; Miss" variable="TRIAL_outcome" value="&quot;miss&quot;"></action>
+                        <action type="report" tag="Report trial outcome" message="--- OUTCOME: Miss ---"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to Set up target" target="Set up Target"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Abort" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action tag="Dequeue target" type="dequeue_stimulus" stimulus="target"></action>
+                        <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <action type="assignment" tag="Set target indicator to 0" variable="CTRL_target_ON" value="0"></action>
+                        <action type="assignment" tag="TRIAL_outcome -&gt; Abort" variable="TRIAL_outcome" value="&quot;abort&quot;"></action>
+                        <action type="report" tag="Report trial outcome" message="--- OUTCOME: Abort ---"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to Set up target" target="End Trial"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Hit" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action tag="Play Sound" type="play_sound" sound="Reward"></action>
+                        <action tag="Dequeue target" type="dequeue_stimulus" stimulus="target"></action>
+                        <action tag="Queue reward feedback" type="queue_stimulus" stimulus="feedback_reward"></action>
+                        <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <action type="assignment" tag="Set target indicator to 0" variable="CTRL_target_ON" value="0"></action>
+                        <action type="assignment" tag="TRIAL_outcome -&gt; Hit" variable="TRIAL_outcome" value="&quot;hit&quot;"></action>
+                        <action type="assignment" tag="Add to INFO_HitCounter" variable="INFO_HitCounter" value="INFO_HitCounter + 1"></action>
+                        <action type="assignment" tag="Add to INFO_ExtraCash" variable="INFO_ExtraCash" value="INFO_ExtraCash + TMP_ExtraCash"></action>
+                        <action type="report" tag="Report trial outcome" message="--- OUTCOME: Hit ---"></action>
+                        <action type="assignment" tag="Change start_area color to green" variable="CTRL_start_area_col_g" value="1"></action>
+                        <action type="start_timer" tag="Start ColorChangeTimer" timer="ColorChangeTimer" timebase="" duration="CTRL_start_area_colorChange_ms" duration_units="ms"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to Set up target" target="Set up Target"></transition>
+                    </task_system_state>
+                    <task_system_state tag="End Trial" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="Dequeue Stimuli" condition="1">
+                            <action tag="Dequeue target" type="dequeue_stimulus" stimulus="target"></action>
+                            <action tag="Dequeue RDP" type="dequeue_stimulus" stimulus="RDP"></action>
+                            <action tag="Dequeue start_area" type="dequeue_stimulus" stimulus="start_area"></action>
+                            <action tag="Dequeue arc" type="dequeue_stimulus" stimulus="arc"></action>
+                            <action tag="Dequeue arcMask" type="dequeue_stimulus" stimulus="arcMask"></action>
+                            <action tag="Dequeue feedback_reward" type="dequeue_stimulus" stimulus="feedback_reward"></action>
+                        </action>
+                        <action type="assignment" tag="start_area color to black" variable="CTRL_start_area_col_g" value="0"></action>
+                        <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <action type="if" tag="Set Matlab variables" condition="1">
+                            <action type="assignment" tag="set ML sync" variable="ML_sync" value="0"></action>
+                            <action type="assignment" tag="set ML trial start" variable="ML_trialEnd" value="ML_trialEnd + 1"></action>
+                        </action>
+                        <action type="report" tag="Report trial end" message="===== TRIAL $ML_trialEnd ENDS ====="></action>
+                        <action type="start_timer" tag="Start ITI_Timer" timer="ITI_Timer" timebase="" duration="CTRL_ITI_ms" duration_units="ms"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to ITI" target="ITI"></transition>
+                    </task_system_state>
+                    <task_system_state tag="ITI" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="start_timer" tag="Start FrameTimer" timer="FrameTimer" timebase="" duration="CTRL_frameTimer_duration" duration_units="ms"></action>
+                        <action type="if" tag="Convert cursor position" condition="1">
+                            <action type="assignment" tag="... X" variable="IO_cursor_x" value="-(CTRL_Xmax * IO_joystickX_calib)"></action>
+                            <action type="assignment" tag="... Y" variable="IO_cursor_y" value="CTRL_Ymax * IO_joystickY_calib"></action>
+                        </action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If required number of targets collected, end paradigm" condition="INFO_HitCounter &gt;= CTRL_RequiredHitNo &amp;&amp; timer_expired(ITI_Timer)" target="End paradigm"></transition>
+                        <transition type="timer_expired" tag="If ITI_Timer Expired, Transition to ..." target="Wait for Joystick" timer="ITI_Timer"></transition>
+                        <transition type="timer_expired" tag="If FrameTimer Expired, Transition to ITI" target="ITI" timer="FrameTimer"></transition>
+                    </task_system_state>
+                    <task_system_state tag="End paradigm" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="report" tag="Report" message="==== $INFO_HitCounter COINS COLLECTED ===="></action>
+                        <action type="report" tag="Report" message="==== ENDING PARADIGM ===="></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="yield" tag="Exit Task System..."></transition>
+                    </task_system_state>
+                </task_system>
+            </trial>
+            <action type="stop_device_IO" tag="Stop (Eyelink)" device="Eyelink"></action>
+        </protocol>
+        <protocol tag="CPR_steady" nsamples="1" sampling_method="cycles" selection="sequential" interruptible="YES">
+            <action type="start_device_IO" tag="Start (Eyelink)" device="Eyelink"></action>
+            <action tag="Start Joystick" type="start_device_IO" device="mIO"></action>
+            <action tag="Queue Background" type="live_queue_stimulus" stimulus="Background"></action>
+            <action tag="Live Queue Cursor" type="live_queue_stimulus" stimulus="cursor"></action>
+            <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+            <action type="if" tag="Paradigm settings" condition="1">
+                <action type="assignment" tag="Set CTRL_RequiredHitNo" variable="CTRL_RequiredHitNo" value="100"></action>
+                <action type="assignment" tag="Set CTRL_snr_min" variable="CTRL_snr_min" value=".4"></action>
+                <action type="assignment" tag="Set CTRL_snr_max" variable="CTRL_snr_max" value=".6"></action>
+                <action type="assignment" tag="Set CTRL_target_duration" variable="CTRL_target_duration" value="400"></action>
+                <action type="assignment" tag="Set CTRL_HoldTarget_ms" variable="CTRL_HoldTarget_ms" value="CTRL_target_duration - (2*CTRL_frameTimer_duration)"></action>
+                <action type="assignment" tag="Set CTRL_steadyState_min" variable="CTRL_steadyState_min" value="1000"></action>
+                <action type="assignment" tag="Set CTRL_steadyState_max" variable="CTRL_steadyState_max" value="2000"></action>
+                <action type="assignment" tag="Set CTRL_steadyState_beforeTarget" variable="CTRL_steadyState_beforeTarget" value="750"></action>
+            </action>
+            <action type="start_timer" tag="Initialize ColorChangeTimer" timer="ColorChangeTimer" timebase="" duration="0.0" duration_units="ms"></action>
+            <trial tag="Trial structure" nsamples="1" sampling_method="cycles" selection="sequential" interruptible="YES">
+                <task_system tag="LOOP" interruptible="YES">
+                    <task_system_state tag="Wait for Joystick" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="start_timer" tag="Start FrameTimer" timer="FrameTimer" timebase="" duration="CTRL_frameTimer_duration" duration_units="ms"></action>
+                        <action type="if" tag="Convert cursor position" condition="1">
+                            <action type="assignment" tag="... X" variable="IO_cursor_x" value="-(CTRL_Xmax * IO_joystickX_calib)"></action>
+                            <action type="assignment" tag="... Y" variable="IO_cursor_y" value="CTRL_Ymax * IO_joystickY_calib"></action>
+                        </action>
+                        <action tag="Queue start_area" type="queue_stimulus" stimulus="start_area"></action>
+                        <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If Cursor inside start area, go to New Trial" condition="IO_start_area_flag == true" target="New Trial"></transition>
+                        <transition type="timer_expired" tag="If FrameTimer Expired, Transition to Update Stimuli" target="Wait for Joystick" timer="FrameTimer"></transition>
+                    </task_system_state>
+                    <task_system_state tag="New Trial" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="Set Matlab variables" condition="1">
+                            <action type="assignment" tag="set ML sync" variable="ML_sync" value="1"></action>
+                            <action type="assignment" tag="set ML trial start" variable="ML_trialStart" value="ML_trialStart + 1"></action>
+                            <action type="assignment" tag="Log task name" variable="INFO_task" value="&quot;Steady_Flip&quot;"></action>
+                        </action>
+                        <action type="if" tag="Set RDP parameters" condition="1">
+                            <action type="assignment" tag="Set RDP direction" variable="RDP_direction" value="disc_rand(0,359)"></action>
+                            <action type="assignment" tag="Set RDP Speed to 4" variable="RDP_speed" value="4"></action>
+                            <action type="assignment" tag="Set RDP coherence" variable="RDP_coherence" value="rand(CTRL_snr_min, CTRL_snr_max)"></action>
+                        </action>
+                        <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <action type="assignment" tag="Draw CTRL_trial_duration" variable="CTRL_trial_duration" value="disc_rand(CTRL_trial_min, CTRL_trial_max)"></action>
+                        <action type="start_timer" tag="Start TrialTimer" timer="TrialTimer" timebase="" duration="CTRL_trial_duration" duration_units="ms"></action>
+                        <action type="report" tag="Report trial start" message="===== TRIAL $ML_trialStart STARTS ====="></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to Show Stimuli" target="Show Stimuli"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Show Stimuli" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="Live Queue Stimuli" condition="1">
+                            <action tag="Live Queue Arc" type="live_queue_stimulus" stimulus="arc"></action>
+                            <action tag="Live Queue ArcMask" type="live_queue_stimulus" stimulus="arcMask"></action>
+                            <action tag="Live Queue RDP" type="live_queue_stimulus" stimulus="RDP"></action>
+                            <action tag="Live Queue Start Area" type="live_queue_stimulus" stimulus="start_area"></action>
+                            <action tag="Live Queue Cursor" type="live_queue_stimulus" stimulus="cursor"></action>
+                            <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        </action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition tag="Go to Set up Target" type="direct" target="Set up Target"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Set up Target" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="assignment" tag="Draw CTRL_Time2Target" variable="CTRL_Time2Target" value="1500 * disc_rand(1,5)"></action>
+                        <action type="start_timer" tag="Start TargetTimer" timer="TargetTimer" timebase="" duration="CTRL_Time2Target" duration_units="ms"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If required number of targets collected, end paradigm" condition="INFO_HitCounter &gt;= CTRL_RequiredHitNo" target="End Trial"></transition>
+                        <transition type="direct" tag="Always Go to Set up steady state" target="Set up steady state"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Set up steady state" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="assignment" tag="Set Steady State Duration" variable="CTRL_SteadyStateDuration" value="disc_rand(CTRL_steadyState_min,CTRL_steadyState_max)"></action>
+                        <action type="start_timer" tag="Start SteadyStateDurationTimer" timer="SteadyStateDurationTimer" timebase="" duration="CTRL_SteadyStateDuration" duration_units="ms"></action>
+                        <action type="start_timer" tag="Start SteadyStateMinDurationTimer" timer="SteadyStateMinDurationTimer" timebase="" duration="CTRL_steadyState_beforeTarget" duration_units="ms"></action>
+                        <action type="assignment" tag="SteadyState start timestamp" variable="TMP_steady_ts" value="now()"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to Update Stimuli" target="Update Stimuli"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Update Stimuli" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="start_timer" tag="Start FrameTimer" timer="FrameTimer" timebase="" duration="CTRL_frameTimer_duration" duration_units="ms"></action>
+                        <action type="if" tag="IF ColorChangeTimer expired..." condition="timer_expired(ColorChangeTimer)">
+                            <action type="assignment" tag="start_area color to black" variable="CTRL_start_area_col_g" value="0"></action>
+                        </action>
+                        <action type="if" tag="Convert cursor position" condition="1">
+                            <action type="assignment" tag="... X" variable="IO_cursor_x" value="-(CTRL_Xmax * IO_joystickX_calib)"></action>
+                            <action type="assignment" tag="... Y" variable="IO_cursor_y" value="CTRL_Ymax * IO_joystickY_calib"></action>
+                        </action>
+                        <action type="if" tag="Update trigger boundaries" condition="1">
+                            <action type="assignment" tag="Update CTRL_arc_trigger_min" variable="CTRL_arc_trigger_min" value="(((TMP_stimDir - (CTRL_arc_width/2) + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                            <action type="assignment" tag="Update CTRL_arc_trigger_max" variable="CTRL_arc_trigger_max" value="(((TMP_stimDir + (CTRL_arc_width/2) + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                        </action>
+                        <action type="if" tag="Calculate Accurary" condition="1">
+                            <action type="assignment" tag="Assign TMP_RDPdir" variable="TMP_RDPdir" value="RDP_direction"></action>
+                            <action type="if" tag="If TMP_RDPdir between 0:359 ..." condition="TMP_RDPdir &gt;= 0 &amp;&amp; TMP_RDPdir &lt; 359">
+                                <action type="assignment" tag="Set TMP_stimDir" variable="TMP_stimDir" value="TMP_RDPdir"></action>
+                            </action>
+                            <action type="if" tag="If TMP_RDPdir &gt; 359..." condition="TMP_RDPdir &gt; 359">
+                                <action type="assignment" tag="Correct TMP_RDPdir value to match angle 0:359" variable="TMP_stimDir" value="TMP_RDPdir - 359"></action>
+                            </action>
+                            <action type="if" tag="If TMP_RDPdir &lt; 0..." condition="TMP_RDPdir &lt; 0">
+                                <action type="assignment" tag="Correct TMP_RDPdir value to match angle 0:359" variable="TMP_stimDir" value="TMP_RDPdir + 359"></action>
+                            </action>
+                            <action type="assignment" tag="Update response accuracy" variable="IO_cursor_accuracy" value="abs(1 - abs(TMP_stimDir - (IO_joystickDirection - 90)) / 180)"></action>
+                            <action type="assignment" tag="Round response accuracy for display" variable="INFO_cursor_accuracyDisplay" value="round(IO_cursor_accuracy * 100) / 100"></action>
+                        </action>
+                        <action type="if" tag="Calculate cursor2target distance" condition="1">
+                            <action type="assignment" tag="Normalise joystick direction" variable="TMP_normJoyDir" value="(((IO_joystickDirection-90) + (180-TMP_stimDir) + 360) % 360) "></action>
+                            <action type="assignment" tag="Normalise RDP direction" variable="TMP_normStimDir" value="(((TMP_stimDir + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                            <action type="assignment" tag="Difference Joystick - Cursor" variable="TMP_joyDeviation" value="abs(TMP_normJoyDir - TMP_normStimDir)"></action>
+                            <action type="assignment" tag="Calculate distance from center" variable="IO_cursor_distance2center" value="sqrt(pow(IO_cursor_y,2) + pow(IO_cursor_x,2))"></action>
+                        </action>
+                        <action type="if" tag="Set arc width" condition="1">
+                            <action type="if" tag="IF IO_cursor_distance2center &lt;= RDP_radius" condition="IO_cursor_distance2center &lt;= RDP_radius">
+                                <action type="assignment" tag="Set to IO_cursor_distance2center" variable="TMP_scalingFactor" value="IO_cursor_distance2center"></action>
+                            </action>
+                            <action type="if" tag="IF IO_cursor_distance2center &gt; RDP_radius" condition="IO_cursor_distance2center &gt; RDP_radius">
+                                <action type="assignment" tag="Set to RDP_radius" variable="TMP_scalingFactor" value="RDP_radius"></action>
+                            </action>
+                            <action type="assignment" tag="Calculate arc width" variable="CTRL_arc_width" value="180 * (abs(TMP_scalingFactor - RDP_radius)/RDP_radius)"></action>
+                        </action>
+                        <action type="if" tag="Set luminance" condition="1">
+                            <action type="assignment" tag="Set arc luminance" variable="CTRL_arc_alpha" value="IO_cursor_distance2center / RDP_radius"></action>
+                            <action type="assignment" tag="Set target luminance" variable="CTRL_target_alpha" value="IO_cursor_distance2center / RDP_radius"></action>
+                        </action>
+                        <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If outside RDP patch, abort trial" condition="IO_cursor_distance2center &gt; RDP_radius" target="Abort"></transition>
+                        <transition type="conditional" tag="If TargetTimer expired, present target" condition="timer_expired(TargetTimer) &amp;&amp; timer_expired(SteadyStateMinDurationTimer)" target="Target presentation"></transition>
+                        <transition type="timer_expired" tag="If SteadyStateDurationTimer Expired, Transition to Direction switch" target="Direction switch" timer="SteadyStateDurationTimer"></transition>
+                        <transition type="timer_expired" tag="If TrialTimer Expired, Transition to End trial" target="End Trial" timer="TrialTimer"></transition>
+                        <transition type="timer_expired" tag="If FrameTimer Expired, Transition to Update Stimuli" target="Update Stimuli" timer="FrameTimer"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Direction switch" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="assignment" tag="Roll TMP_dice" variable="TMP_dice" value="disc_rand(0,1)"></action>
+                        <action type="if" tag="If TMP_dice == 1" condition="TMP_dice == 1">
+                            <action type="assignment" tag="Assign new RDP_direction [+]" variable="RDP_direction" value="RDP_direction + CTRL_directionChange_list[disc_rand(0,3)]"></action>
+                        </action>
+                        <action type="if" tag="If TMP_dice == 0" condition="TMP_dice == 0">
+                            <action type="assignment" tag="Assign new RDP_direction [-]" variable="RDP_direction" value="RDP_direction - CTRL_directionChange_list[disc_rand(0,3)]"></action>
+                        </action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to Set up steady state" target="Set up steady state"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Target presentation" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="Determine target coordinates" condition="1">
+                            <action type="assignment" tag="Calculate CTRL_target_x" variable="CTRL_target_x" value="sin((RDP_direction)*(pi/180))*(RDP_radius + (CTRL_target_size/2))"></action>
+                            <action type="assignment" tag="Calculate CTRL_target_y" variable="CTRL_target_y" value="cos((RDP_direction)*(pi/180))*(RDP_radius+ (CTRL_target_size/2))"></action>
+                        </action>
+                        <action tag="Live Queue target" type="live_queue_stimulus" stimulus="target"></action>
+                        <action type="assignment" tag="Set target indicator to 1" variable="CTRL_target_ON" value="1"></action>
+                        <action type="start_timer" tag="Start TargetDurationTimer" timer="TargetDurationTimer" timebase="" duration="CTRL_target_duration" duration_units="ms"></action>
+                        <action type="report" tag="Report target" message="--- SHOW TARGET ---"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to Check if target detected" target="Check if target detected"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Check if target detected" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="start_timer" tag="Start FrameTimer" timer="FrameTimer" timebase="" duration="CTRL_frameTimer_duration" duration_units="ms"></action>
+                        <action type="if" tag="IF start_area still green..." condition="CTRL_start_area_col_g == 1">
+                            <action type="assignment" tag="...change color to clack" variable="CTRL_start_area_col_g" value="0"></action>
+                        </action>
+                        <action type="if" tag="Convert cursor position" condition="1">
+                            <action type="assignment" tag="... X" variable="IO_cursor_x" value="-(CTRL_Xmax * IO_joystickX_calib)"></action>
+                            <action type="assignment" tag="... Y" variable="IO_cursor_y" value="CTRL_Ymax * IO_joystickY_calib"></action>
+                        </action>
+                        <action type="if" tag="Update trigger boundaries" condition="1">
+                            <action type="assignment" tag="Update CTRL_arc_trigger_min" variable="CTRL_arc_trigger_min" value="(((TMP_stimDir - (CTRL_arc_width/2) + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                            <action type="assignment" tag="Update CTRL_arc_trigger_max" variable="CTRL_arc_trigger_max" value="(((TMP_stimDir + (CTRL_arc_width/2) + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                        </action>
+                        <action type="if" tag="Calculate Accurary" condition="1">
+                            <action type="assignment" tag="Assign TMP_RDPdir" variable="TMP_RDPdir" value="RDP_direction"></action>
+                            <action type="if" tag="If TMP_RDPdir between 0:359 ..." condition="TMP_RDPdir &gt;= 0 &amp;&amp; TMP_RDPdir &lt; 359">
+                                <action type="assignment" tag="Set TMP_stimDir" variable="TMP_stimDir" value="TMP_RDPdir"></action>
+                            </action>
+                            <action type="if" tag="If TMP_RDPdir &gt; 359..." condition="TMP_RDPdir &gt; 359">
+                                <action type="assignment" tag="Correct TMP_RDPdir value to match angle 0:359" variable="TMP_stimDir" value="TMP_RDPdir - 359"></action>
+                            </action>
+                            <action type="if" tag="If TMP_RDPdir &lt; 0..." condition="TMP_RDPdir &lt; 0">
+                                <action type="assignment" tag="Correct TMP_RDPdir value to match angle 0:359" variable="TMP_stimDir" value="TMP_RDPdir + 359"></action>
+                            </action>
+                            <action type="assignment" tag="Update response accuracy" variable="IO_cursor_accuracy" value="abs(1 - abs(TMP_stimDir - (IO_joystickDirection - 90)) / 180)"></action>
+                            <action type="assignment" tag="Round response accuracy for display" variable="INFO_cursor_accuracyDisplay" value="round(IO_cursor_accuracy * 100) / 100"></action>
+                        </action>
+                        <action type="if" tag="Calculate cursor2target distance" condition="1">
+                            <action type="assignment" tag="Normalise joystick direction" variable="TMP_normJoyDir" value="(((IO_joystickDirection-90) + (180-TMP_stimDir) + 360) % 360) "></action>
+                            <action type="assignment" tag="Normalise RDP direction" variable="TMP_normStimDir" value="(((TMP_stimDir + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                            <action type="assignment" tag="Difference Joystick - Cursor" variable="TMP_joyDeviation" value="abs(TMP_normJoyDir - TMP_normStimDir)"></action>
+                            <action type="assignment" tag="Calculate distance from center" variable="IO_cursor_distance2center" value="sqrt(pow(IO_cursor_y,2) + pow(IO_cursor_x,2))"></action>
+                        </action>
+                        <action type="if" tag="Set arc width" condition="1">
+                            <action type="if" tag="IF IO_cursor_distance2center &lt;= RDP_radius" condition="IO_cursor_distance2center &lt;= RDP_radius">
+                                <action type="assignment" tag="Set to IO_cursor_distance2center" variable="TMP_scalingFactor" value="IO_cursor_distance2center"></action>
+                            </action>
+                            <action type="if" tag="IF IO_cursor_distance2center &gt; RDP_radius" condition="IO_cursor_distance2center &gt; RDP_radius">
+                                <action type="assignment" tag="Set to RDP_radius" variable="TMP_scalingFactor" value="RDP_radius"></action>
+                            </action>
+                            <action type="assignment" tag="Calculate arc width" variable="CTRL_arc_width" value="180 * (abs(TMP_scalingFactor - RDP_radius)/RDP_radius)"></action>
+                        </action>
+                        <action type="if" tag="Set luminance" condition="1">
+                            <action type="assignment" tag="Set arc luminance" variable="CTRL_arc_alpha" value="IO_cursor_distance2center / RDP_radius"></action>
+                            <action type="assignment" tag="Set target luminance" variable="CTRL_target_alpha" value="IO_cursor_distance2center / RDP_radius"></action>
+                        </action>
+                        <action type="if" tag="Check if arc triggered" condition="1">
+                            <action type="assignment" tag="Define flag" variable="CTRL_arc_flag" value="(TMP_normJoyDir &gt;= CTRL_arc_trigger_min) &amp;&amp; (TMP_normJoyDir &lt;=CTRL_arc_trigger_max)"></action>
+                        </action>
+                        <action type="assignment" tag="Update TMP_ExtraCash" variable="TMP_ExtraCash" value="round(( ( (IO_cursor_distance2center/RDP_radius) + IO_cursor_accuracy) /2) *100) /1000"></action>
+                        <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <action type="start_timer" tag="Start HoldDurationTimer" timer="HoldDurationTimer" timebase="" duration="CTRL_HoldTarget_ms" duration_units="ms"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If outside RDP patch, abort trial" condition="IO_cursor_distance2center &gt; RDP_radius" target="Abort"></transition>
+                        <transition type="conditional" tag="If target overlapping with arc go to Hold target" condition="CTRL_arc_flag" target="Hold target"></transition>
+                        <transition type="timer_expired" tag="If TargetDurationTimer Expired, Transition to Miss" target="Miss" timer="TargetDurationTimer"></transition>
+                        <transition type="timer_expired" tag="If FrameTimer Expired, Transition to Update Stimuli" target="Check if target detected" timer="FrameTimer"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Hold target" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="start_timer" tag="Start FrameTimer" timer="FrameTimer" timebase="" duration="CTRL_frameTimer_duration" duration_units="ms"></action>
+                        <action type="if" tag="Convert cursor position" condition="1">
+                            <action type="assignment" tag="... X" variable="IO_cursor_x" value="-(CTRL_Xmax * IO_joystickX_calib)"></action>
+                            <action type="assignment" tag="... Y" variable="IO_cursor_y" value="CTRL_Ymax * IO_joystickY_calib"></action>
+                        </action>
+                        <action type="if" tag="Update trigger boundaries" condition="1">
+                            <action type="assignment" tag="Update CTRL_arc_trigger_min" variable="CTRL_arc_trigger_min" value="(((TMP_stimDir - (CTRL_arc_width/2) + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                            <action type="assignment" tag="Update CTRL_arc_trigger_max" variable="CTRL_arc_trigger_max" value="(((TMP_stimDir + (CTRL_arc_width/2) + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                        </action>
+                        <action type="if" tag="Calculate Accurary" condition="1">
+                            <action type="assignment" tag="Assign TMP_RDPdir" variable="TMP_RDPdir" value="RDP_direction"></action>
+                            <action type="if" tag="If TMP_RDPdir between 0:359 ..." condition="TMP_RDPdir &gt;= 0 &amp;&amp; TMP_RDPdir &lt; 359">
+                                <action type="assignment" tag="Set TMP_stimDir" variable="TMP_stimDir" value="TMP_RDPdir"></action>
+                            </action>
+                            <action type="if" tag="If TMP_RDPdir &gt; 359..." condition="TMP_RDPdir &gt; 359">
+                                <action type="assignment" tag="Correct TMP_RDPdir value to match angle 0:359" variable="TMP_stimDir" value="TMP_RDPdir - 359"></action>
+                            </action>
+                            <action type="if" tag="If TMP_RDPdir &lt; 0..." condition="TMP_RDPdir &lt; 0">
+                                <action type="assignment" tag="Correct TMP_RDPdir value to match angle 0:359" variable="TMP_stimDir" value="TMP_RDPdir + 359"></action>
+                            </action>
+                            <action type="assignment" tag="Update response accuracy" variable="IO_cursor_accuracy" value="abs(1 - abs(TMP_stimDir - (IO_joystickDirection - 90)) / 180)"></action>
+                            <action type="assignment" tag="Round response accuracy for display" variable="INFO_cursor_accuracyDisplay" value="round(IO_cursor_accuracy * 100) / 100"></action>
+                        </action>
+                        <action type="if" tag="Calculate cursor2target distance" condition="1">
+                            <action type="assignment" tag="Normalise joystick direction" variable="TMP_normJoyDir" value="(((IO_joystickDirection-90) + (180-TMP_stimDir) + 360) % 360) "></action>
+                            <action type="assignment" tag="Normalise RDP direction" variable="TMP_normStimDir" value="(((TMP_stimDir + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                            <action type="assignment" tag="Difference Joystick - Cursor" variable="TMP_joyDeviation" value="abs(TMP_normJoyDir - TMP_normStimDir)"></action>
+                            <action type="assignment" tag="Calculate distance from center" variable="IO_cursor_distance2center" value="sqrt(pow(IO_cursor_y,2) + pow(IO_cursor_x,2))"></action>
+                        </action>
+                        <action type="if" tag="Check if arc triggered" condition="1">
+                            <action type="assignment" tag="Define flag" variable="CTRL_arc_flag" value="(TMP_normJoyDir &gt;= CTRL_arc_trigger_min) &amp;&amp; (TMP_normJoyDir &lt;=CTRL_arc_trigger_max)"></action>
+                        </action>
+                        <action type="if" tag="Reduce target luminance" condition="1">
+                            <action type="assignment" tag="Set target luminance" variable="CTRL_target_alpha" value="CTRL_target_alpha - (CTRL_target_alpha/100)"></action>
+                            <action type="if" tag="If CTRL_target_alpha &lt; 0" condition="CTRL_target_alpha &lt; 0">
+                                <action type="assignment" tag="Set target luminance to zero" variable="CTRL_target_alpha" value="0"></action>
+                            </action>
+                        </action>
+                        <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If outside RDP patch, abort trial" condition="IO_cursor_distance2center &gt; RDP_radius" target="Abort"></transition>
+                        <transition type="conditional" tag="If target overlapping with arc -&gt; Hit" condition="CTRL_arc_flag &amp;&amp; timer_expired(HoldDurationTimer)" target="Hit"></transition>
+                        <transition type="conditional" tag="If target lost -&gt; Check if target detected" condition="CTRL_arc_flag == false" target="Check if target detected"></transition>
+                        <transition type="timer_expired" tag="If TargetDurationTimer Expired, Transition to Miss" target="Miss" timer="TargetDurationTimer"></transition>
+                        <transition type="timer_expired" tag="If FrameTimer Expired, Transition to Hold target" target="Hold target" timer="FrameTimer"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Miss" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action tag="Dequeue target" type="dequeue_stimulus" stimulus="target"></action>
+                        <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <action type="assignment" tag="Set target indicator to 0" variable="CTRL_target_ON" value="0"></action>
+                        <action type="assignment" tag="TRIAL_outcome -&gt; Miss" variable="TRIAL_outcome" value="&quot;miss&quot;"></action>
+                        <action type="report" tag="Report trial outcome" message="--- OUTCOME: Miss ---"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to Set up target" target="Set up Target"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Abort" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action tag="Dequeue target" type="dequeue_stimulus" stimulus="target"></action>
+                        <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <action type="assignment" tag="Set target indicator to 0" variable="CTRL_target_ON" value="0"></action>
+                        <action type="assignment" tag="TRIAL_outcome -&gt; Abort" variable="TRIAL_outcome" value="&quot;abort&quot;"></action>
+                        <action type="report" tag="Report trial outcome" message="--- OUTCOME: Abort ---"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to Set up target" target="End Trial"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Hit" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action tag="Play Sound" type="play_sound" sound="Reward"></action>
+                        <action tag="Dequeue target" type="dequeue_stimulus" stimulus="target"></action>
+                        <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <action type="assignment" tag="Set target indicator to 0" variable="CTRL_target_ON" value="0"></action>
+                        <action type="assignment" tag="TRIAL_outcome -&gt; Hit" variable="TRIAL_outcome" value="&quot;hit&quot;"></action>
+                        <action type="assignment" tag="Add to INFO_HitCounter" variable="INFO_HitCounter" value="INFO_HitCounter + 1"></action>
+                        <action type="assignment" tag="Add to INFO_ExtraCash" variable="INFO_ExtraCash" value="INFO_ExtraCash + TMP_ExtraCash"></action>
+                        <action type="report" tag="Report trial outcome" message="--- OUTCOME: Hit ---"></action>
+                        <action type="assignment" tag="Change start_area color to green" variable="CTRL_start_area_col_g" value="1"></action>
+                        <action type="start_timer" tag="Start ColorChangeTimer" timer="ColorChangeTimer" timebase="" duration="CTRL_start_area_colorChange_ms" duration_units="ms"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to Set up target" target="Set up Target"></transition>
+                    </task_system_state>
+                    <task_system_state tag="End Trial" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="Dequeue Stimuli" condition="1">
+                            <action tag="Dequeue target" type="dequeue_stimulus" stimulus="target"></action>
+                            <action tag="Dequeue RDP" type="dequeue_stimulus" stimulus="RDP"></action>
+                            <action tag="Dequeue start_area" type="dequeue_stimulus" stimulus="start_area"></action>
+                            <action tag="Dequeue arc" type="dequeue_stimulus" stimulus="arc"></action>
+                            <action tag="Dequeue arcMask" type="dequeue_stimulus" stimulus="arcMask"></action>
+                        </action>
+                        <action type="assignment" tag="start_area color to black" variable="CTRL_start_area_col_g" value="0"></action>
+                        <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <action type="if" tag="Set Matlab variables" condition="1">
+                            <action type="assignment" tag="set ML sync" variable="ML_sync" value="0"></action>
+                            <action type="assignment" tag="set ML trial start" variable="ML_trialEnd" value="ML_trialEnd + 1"></action>
+                        </action>
+                        <action type="report" tag="Report trial end" message="===== TRIAL $ML_trialEnd ENDS ====="></action>
+                        <action type="start_timer" tag="Start ITI_Timer" timer="ITI_Timer" timebase="" duration="CTRL_ITI_ms" duration_units="ms"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to ITI" target="ITI"></transition>
+                    </task_system_state>
+                    <task_system_state tag="ITI" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="start_timer" tag="Start FrameTimer" timer="FrameTimer" timebase="" duration="CTRL_frameTimer_duration" duration_units="ms"></action>
+                        <action type="if" tag="Convert cursor position" condition="1">
+                            <action type="assignment" tag="... X" variable="IO_cursor_x" value="-(CTRL_Xmax * IO_joystickX_calib)"></action>
+                            <action type="assignment" tag="... Y" variable="IO_cursor_y" value="CTRL_Ymax * IO_joystickY_calib"></action>
+                        </action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If required number of targets collected, end paradigm" condition="INFO_HitCounter &gt;= CTRL_RequiredHitNo &amp;&amp; timer_expired(ITI_Timer)" target="End paradigm"></transition>
+                        <transition type="timer_expired" tag="If ITI_Timer Expired, Transition to ..." target="Wait for Joystick" timer="ITI_Timer"></transition>
+                        <transition type="timer_expired" tag="If FrameTimer Expired, Transition to ITI" target="ITI" timer="FrameTimer"></transition>
+                    </task_system_state>
+                    <task_system_state tag="End paradigm" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="report" tag="Report" message="==== $INFO_HitCounter COINS COLLECTED ===="></action>
+                        <action type="report" tag="Report" message="==== ENDING PARADIGM ===="></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="yield" tag="Exit Task System..."></transition>
+                    </task_system_state>
+                </task_system>
+            </trial>
+            <action type="stop_device_IO" tag="Stop (Eyelink)" device="Eyelink"></action>
+        </protocol>
+    </experiment>
+</monkeyml>

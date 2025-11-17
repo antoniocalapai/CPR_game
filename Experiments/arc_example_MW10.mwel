@@ -1,0 +1,40 @@
+// I/O Devices
+stimulus_display 'Stimulus Display' (0, 0, 0)
+
+// Variables
+var IO_arc_size = 10
+var IO_arc_width = 10
+var IO_dummy_x = 0
+var IO_dummy_y = 0
+var IO_dummy_trigger = 0
+var IO_arc_x = 0
+var IO_arc_y = 0
+var IO_arc_angle = 90
+var STOP = 0
+
+// Stimuli
+blank_screen Background ()
+stimulus/advstimulus arc (
+    trigger_width = IO_arc_size
+    trigger_watch_x = IO_dummy_x
+    trigger_watch_y = IO_dummy_y
+    trigger_flag = IO_dummy_trigger
+    x_size = IO_arc_size
+    y_size = IO_arc_size
+    x_position = IO_arc_x
+    y_position = IO_arc_y
+    shape = format("circle %d", (integer)IO_arc_width)
+    color = 1,1,1
+    rotation = IO_arc_angle
+    alpha_multiplier = 1
+    version = 1
+    autoplay = YES
+    )
+
+// Experiments
+protocol 'Arc Test' {
+    while (STOP < 1) {
+        action/queue_stimulus (stimulus = arc)
+        action/update_stimulus_display ()
+    }    
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="no"?>
+<monkeyml version="1.0">
+    <io_devices tag="IO Devices">
+        <iodevice type="serverside_conduit" tag="Server-side Event Conduit" resource_name="server_conduit"></iodevice>
+    </io_devices>
+    <variables tag="Variables">
+        <variable tag="rand_var" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+        <variable tag="start" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+        <variable tag="stop" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+    </variables>
+    <sounds tag="Sounds"></sounds>
+    <stimuli tag="Stimuli"></stimuli>
+    <filters tag="Filters"></filters>
+    <optimizers tag="Optimizers"></optimizers>
+    <experiment tag="New Experiment" full_name="" description="">
+        <protocol tag="New Protocol" nsamples="1" sampling_method="cycles" selection="sequential" interruptible="YES">
+            <trial tag="New Trial" nsamples="10" sampling_method="cycles" selection="sequential" interruptible="YES">
+                <action type="assignment" tag="Start collecting events" variable="start" value="!start"></action>
+                <list tag="New List" nsamples="10" sampling_method="cycles" selection="sequential" interruptible="YES">
+                    <action type="assignment" tag="Update rand_var" variable="rand_var" value="disc_rand(1, 10)"></action>
+                    <action type="report" tag="Announce rand_var" message="rand_var = $rand_var"></action>
+                </list>
+                <action type="assignment" tag="Stop collecting events" variable="stop" value="!stop"></action>
+                <action type="wait" tag="Wait" duration="1.0" duration_units="s"></action>
+            </trial>
+        </protocol>
+    </experiment>
+</monkeyml>

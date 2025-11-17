@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<monkeyml version="1.0">
+    <io_devices tag="IO Devices">
+        <iodevice type="stimulus_display" tag="Stimulus Display" background_color="0, 0, 0" redraw_on_every_refresh="NO" announce_stimuli_on_implicit_updates="YES"></iodevice>
+        <iodevice tag="mIO" type="mIO" data_interval="1ms" joystick_direction="IO_joystickDirection" joystick_strength="IO_joystickStrength" joystick_x_raw="IO_joystickX_raw" joystick_y_raw="IO_joystickY_raw" joystick_x_calib="IO_joystickX_calib" joystick_y_calib="IO_joystickY_calib" reward_a="IO_rewardA"></iodevice>
+    </io_devices>
+    <variables tag="Variables">
+        <folder tag="EXP">
+            <variable tag="EXP_Xmax" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="15.2024" type="any"></variable>
+            <variable tag="EXP_Ymax" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="11.4018" type="any"></variable>
+        </folder>
+        <folder tag="IO">
+            <variable tag="IO_convX" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_convY" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_joystickDirection" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="float"></variable>
+            <variable tag="IO_joystickStrength" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_joystickX_raw" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="integer"></variable>
+            <variable tag="IO_joystickY_raw" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="integer"></variable>
+            <variable tag="IO_joystickX_calib" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="float"></variable>
+            <variable tag="IO_joystickY_calib" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="float"></variable>
+            <variable tag="IO_start_area_flag" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_rewardA" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_cursor_distance2center" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_cursor_accuracy" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_cursor_accuracyDisplay" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_cursor_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_cursor_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+        </folder>
+        <folder tag="TMP">
+            <variable tag="alpha" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="TMP_stimDir" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="TMP_joyDeviation" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="TMP_normStimDir" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="TMP_normJoyDir" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="TMP_scalingFactor" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="col_r" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1" type="any"></variable>
+            <variable tag="col_g" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="col_b" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+        </folder>
+        <folder tag="RDP">
+            <variable tag="RDP_radius" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="8" type="any"></variable>
+            <variable tag="RDP_direction" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="RDP_controlled_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="RDP_target_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="RDP_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="RDP_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="RDP_density" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="5" type="any"></variable>
+            <variable tag="RDP_dotsize" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.2" type="any"></variable>
+            <variable tag="RDP_speed" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="3" type="any"></variable>
+            <variable tag="RDP_coherence" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1" type="any"></variable>
+            <variable tag="RDP_lifetime" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.3" type="any"></variable>
+        </folder>
+        <folder tag="Target">
+            <variable tag="IO_target_size" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="2" type="any"></variable>
+            <variable tag="IO_target_flag" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_target_ON" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_target_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_target_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="9.25" type="any"></variable>
+            <variable tag="IO_target_alpha" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="IO_arc_width" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_arc_size" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="20" type="any"></variable>
+            <variable tag="IO_arc_flag" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_arc_trigger_min" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="IO_arc_trigger_max" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="IO_arcMask_size" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="17" type="any"></variable>
+            <variable tag="IO_arcMask_flag" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+        </folder>
+    </variables>
+    <sounds tag="Sounds">
+        <sound tag="Reward" type="wav_file" path="./sounds/reward.wav" amplitude="1.0"></sound>
+    </sounds>
+    <stimuli tag="Stimuli">
+        <stimulus type="blank_screen" tag="Background" color="0.5,0.5,0.5"></stimulus>
+        <stimulus type="circular_fixation_point" tag="start_area" color="0,0,0" trigger_width="2" trigger_watch_x="IO_convX" trigger_watch_y="IO_convY" trigger_flag="IO_start_area_flag" x_size="2" y_size="2" x_position="0" y_position="0" rotation="0" alpha_multiplier=".3"></stimulus>
+        <stimulus type="r_d_p" tag="RDP" radius="RDP_radius" x_position="RDP_x" y_position="RDP_y" dot_density="RDP_density" dot_size="RDP_dotsize" color="1,1,1" alpha_multiplier="1.0" direction="RDP_direction" speed="RDP_speed" coherence="RDP_coherence" lifetime="RDP_lifetime" announce_dots="NO" autoplay="YES"></stimulus>
+        <stimulus type="circular_fixation_point" tag="cursor" color="1,1,1" trigger_width="0" trigger_watch_x="0" trigger_watch_y="0" trigger_flag="0" x_size="1" y_size="1" x_position="EXP_Xmax * IO_joystickX_calib" y_position="EXP_Ymax * IO_joystickY_calib" rotation="0" alpha_multiplier="1"></stimulus>
+        <stimulus type="circular_fixation_point" tag="target" color=".2, .2, .2" trigger_width="IO_target_size" trigger_watch_x="IO_cursor_x" trigger_watch_y="IO_cursor_y" trigger_flag="IO_target_flag" x_size="IO_target_size" y_size="IO_target_size" x_position="IO_target_x" y_position="IO_target_y" rotation="0" alpha_multiplier="IO_target_alpha"></stimulus>
+        <stimulus type="advstimulus" tag="arc" trigger_width="IO_arc_size" trigger_watch_x="IO_target_x" trigger_watch_y="IO_target_y" trigger_flag="IO_arc_flag" x_size="IO_arc_size" y_size="IO_arc_size" x_position="0" y_position="0" shape="format(&quot;circle %d&quot;, (integer)IO_arc_width)" color="col_r, col_g, col_b" rotation="-RDP_direction + (IO_arc_width/2) + (IO_joystickDirection -90)" alpha_multiplier="1" version="1" autoplay="YES"></stimulus>
+        <stimulus type="circular_fixation_point" tag="arcMask" color="0.5,0.5,0.5" trigger_width="IO_arcMask_size" trigger_watch_x="IO_cursor_x" trigger_watch_y="IO_cursor_x" trigger_flag="IO_arcMask_flag" x_size="IO_arcMask_size" y_size="IO_arcMask_size" x_position="0" y_position="0" rotation="0" alpha_multiplier="1"></stimulus>
+    </stimuli>
+    <filters tag="Filters"></filters>
+    <optimizers tag="Optimizers"></optimizers>
+    <resources tag="Resources"></resources>
+    <experiment tag="New Experiment" full_name="" description="">
+        <protocol tag="New Protocol" nsamples="1" sampling_method="cycles" selection="sequential" interruptible="YES">
+            <action tag="Start Joystick" type="start_device_IO" device="mIO"></action>
+            <action tag="Queue Background" type="live_queue_stimulus" stimulus="Background"></action>
+            <action tag="Live Queue Cursor" type="live_queue_stimulus" stimulus="cursor"></action>
+            <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+            <trial tag="New Trial" nsamples="1" sampling_method="cycles" selection="sequential" interruptible="YES">
+                <task_system tag="New Task System" interruptible="YES">
+                    <task_system_state tag="Show RDP &amp; Target" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="report" tag="Report" message="Set up screen"></action>
+                        <action type="if" tag="Live Queue Stimuli" condition="1">
+                            <action tag="Live Queue Arc" type="live_queue_stimulus" stimulus="arc"></action>
+                            <action tag="Live Queue ArcMask" type="live_queue_stimulus" stimulus="arcMask"></action>
+                            <action tag="Live Queue RDP" type="live_queue_stimulus" stimulus="RDP"></action>
+                            <action tag="Live Queue Start Area" type="live_queue_stimulus" stimulus="start_area"></action>
+                            <action tag="Live Queue Cursor" type="live_queue_stimulus" stimulus="cursor"></action>
+                            <action tag="Queue Stimulus" type="queue_stimulus" stimulus="target"></action>
+                            <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        </action>
+                        <action type="if" tag="Convert cursor position" condition="1">
+                            <action type="assignment" tag="... X" variable="IO_cursor_x" value="-(EXP_Xmax * IO_joystickX_calib)"></action>
+                            <action type="assignment" tag="... Y" variable="IO_cursor_y" value="EXP_Ymax * IO_joystickY_calib"></action>
+                        </action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition tag="Go to Update Arc" type="direct" target="Update Arc"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Update Arc" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="start_timer" tag="Start FrameTimer" timer="FrameTimer" timebase="" duration="16" duration_units="ms"></action>
+                        <action type="if" tag="Convert cursor position" condition="1">
+                            <action type="assignment" tag="... X" variable="IO_cursor_x" value="-(EXP_Xmax * IO_joystickX_calib)"></action>
+                            <action type="assignment" tag="... Y" variable="IO_cursor_y" value="EXP_Ymax * IO_joystickY_calib"></action>
+                        </action>
+                        <action type="if" tag="Update trigger boundaries" condition="1">
+                            <action type="assignment" tag="Update IO_arc_trigger_min" variable="IO_arc_trigger_min" value="(((TMP_stimDir - (IO_arc_width/2) + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                            <action type="assignment" tag="Update IO_arc_trigger_max" variable="IO_arc_trigger_max" value="(((TMP_stimDir + (IO_arc_width/2) + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                        </action>
+                        <action type="if" tag="Calculate Accurary" condition="1">
+                            <action type="assignment" tag="Assign alpha" variable="alpha" value="RDP_direction"></action>
+                            <action type="if" tag="If alpha between 0:359 ..." condition="alpha &gt;= 0 &amp;&amp; alpha &lt; 359">
+                                <action type="assignment" tag="Set TMP_stimDir" variable="TMP_stimDir" value="alpha"></action>
+                            </action>
+                            <action type="if" tag="If alpha &gt; 359..." condition="alpha &gt; 359">
+                                <action type="assignment" tag="Correct alpha value to match angle 0:359" variable="TMP_stimDir" value="alpha - 359"></action>
+                            </action>
+                            <action type="if" tag="If alpha &lt; 0..." condition="alpha &lt; 0">
+                                <action type="assignment" tag="Correct alpha value to match angle 0:359" variable="TMP_stimDir" value="alpha + 359"></action>
+                            </action>
+                            <action type="assignment" tag="Update response accuracy" variable="IO_cursor_accuracy" value="abs(1 - abs(TMP_stimDir - (IO_joystickDirection - 90)) / 180)"></action>
+                            <action type="assignment" tag="Round response accuracy for display" variable="IO_cursor_accuracyDisplay" value="round(IO_cursor_accuracy * 100) / 100"></action>
+                        </action>
+                        <action type="if" tag="Calculate cursor2target distance" condition="1">
+                            <action type="assignment" tag="Normalise joystick direction" variable="TMP_normJoyDir" value="(((IO_joystickDirection-90) + (180-TMP_stimDir) + 360) % 360) "></action>
+                            <action type="assignment" tag="Normalise RDP direction" variable="TMP_normStimDir" value="(((TMP_stimDir + 360) % 360) + ((180-TMP_stimDir) + 360)) % 360"></action>
+                            <action type="assignment" tag="Difference Joystick - Cursor" variable="TMP_joyDeviation" value="abs(TMP_normJoyDir - TMP_normStimDir)"></action>
+                            <action type="assignment" tag="Calculate distance from center" variable="IO_cursor_distance2center" value="sqrt(pow(IO_cursor_y,2) + pow(IO_cursor_x,2))"></action>
+                        </action>
+                        <action type="if" tag="Set arc width" condition="1">
+                            <action type="if" tag="IF IO_cursor_distance2center &lt;= RDP_radius" condition="IO_cursor_distance2center &lt;= RDP_radius">
+                                <action type="assignment" tag="Set to IO_cursor_distance2center" variable="TMP_scalingFactor" value="IO_cursor_distance2center"></action>
+                            </action>
+                            <action type="if" tag="IF IO_cursor_distance2center &gt; RDP_radius" condition="IO_cursor_distance2center &gt; RDP_radius">
+                                <action type="assignment" tag="Set to RDP_radius" variable="TMP_scalingFactor" value="RDP_radius"></action>
+                            </action>
+                            <action type="assignment" tag="Calculate arc width" variable="IO_arc_width" value="10 * abs(TMP_scalingFactor - 8)"></action>
+                        </action>
+                        <action type="assignment" tag="Set target luminance" variable="IO_target_alpha" value="IO_cursor_distance2center / RDP_radius"></action>
+                        <action type="report" tag="Report accuracy &amp; distance" message="--- ACCURACY: $IO_cursor_accuracyDisplay --- DISTANCE: $IO_cursor_distance2center"></action>
+                        <action type="if" tag="Check if arc triggered" condition="1">
+                            <action type="assignment" tag="Define flag" variable="IO_arc_flag" value="(TMP_normJoyDir &gt;= IO_arc_trigger_min) &amp;&amp; (TMP_normJoyDir &lt;=IO_arc_trigger_max)"></action>
+                            <action type="if" tag="IF arc triggered..." condition="IO_arc_flag">
+                                <action type="assignment" tag="Change color" variable="col_g" value="1"></action>
+                            </action>
+                            <action type="if" tag="IF arc not triggered..." condition="IO_arc_flag == false">
+                                <action type="assignment" tag="Change color" variable="col_g" value="0"></action>
+                            </action>
+                        </action>
+                        <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="timer_expired" tag="If Timer Expired, Transition to ..." target="Update Arc" timer="FrameTimer"></transition>
+                    </task_system_state>
+                </task_system>
+            </trial>
+        </protocol>
+    </experiment>
+</monkeyml>

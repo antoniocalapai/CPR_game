@@ -1,0 +1,631 @@
+<?xml version="1.0"?>
+<monkeyml version="1.0">
+    <io_devices tag="IO Devices">
+        <iodevice type="stimulus_display" tag="Stimulus Display" background_color="0.5, 0.5, 0.5" announce_stimuli_on_implicit_updates="YES"></iodevice>
+        <iodevice type="mouse_input" tag="Mouse" mouse_position_x="IO_mouse_x" mouse_position_y="IO_mouse_y" mouse_down="IO_mouse_down" hide_cursor="YES" use_mirror_window="YES"></iodevice>
+    </io_devices>
+    <variables tag="Variables">
+        <folder tag="MatLab">
+            <variable tag="ML_trialEnd" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="ML_trialStart" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="ML_sync" scope="global" logging="when_changed" default_value="0" type="boolean"></variable>
+            <variable tag="TRIAL_outcome" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+        </folder>
+        <folder tag="Feedback">
+            <variable tag="start_r" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.7" type="any"></variable>
+            <variable tag="start_g" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.7" type="any"></variable>
+            <variable tag="start_b" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.7" type="any"></variable>
+            <variable tag="FB_scoreTimer" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="FB_scoreText" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="FB_ruler_size_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1" type="any"></variable>
+            <variable tag="FB_ruler_size_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="20" type="any"></variable>
+            <variable tag="FB_ruler_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="-14.5" type="any"></variable>
+            <variable tag="FB_ruler_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="FB_counter_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="-14.5" type="any"></variable>
+            <variable tag="FB_counter_all_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="-14.5" type="any"></variable>
+            <variable tag="FB_counter_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="FB_counter_all_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="FB_counter_size_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="FB_counter_size_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1" type="any"></variable>
+            <variable tag="FB_counter_all_size_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="FB_counter_all_size_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1" type="any"></variable>
+            <variable tag="FB_textFontSize" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="30" type="any"></variable>
+            <variable tag="FB_textXSize" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="5" type="any"></variable>
+            <variable tag="FB_textYSize" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="2" type="any"></variable>
+            <variable tag="FB_pos_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="-14.5" type="any"></variable>
+            <variable tag="FB_pos_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+        </folder>
+        <folder tag="RDP">
+            <variable tag="RDP_direction" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="RDP_radius" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="8" type="any"></variable>
+            <variable tag="RDP_controlled_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="RDP_target_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="RDP_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="RDP_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="RDP_density" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="3" type="any"></variable>
+            <variable tag="RDP_dotsize" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.2" type="any"></variable>
+            <variable tag="RDP_speed" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="3" type="any"></variable>
+            <variable tag="RDP_coherence" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.3" type="any"></variable>
+            <variable tag="RDP_lifetime" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.3" type="any"></variable>
+            <variable tag="RDP_r" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.75" type="any"></variable>
+            <variable tag="RDP_g" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.75" type="any"></variable>
+            <variable tag="RDP_b" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.75" type="any"></variable>
+        </folder>
+        <folder tag="EXP">
+            <variable tag="EXP_total_events" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="96" type="any"></variable>
+            <variable tag="EXP_stepsize" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="EXP_showTarget" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="EXP_shiftFrames" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="EXP_shiftType" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="EXP_debug" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="EXP_expShift" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="EXP_stepShift" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="EXP_theta_c" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="EXP_refreshRate" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1000 / refresh_rate()" type="any"></variable>
+            <variable tag="EXP_alwaysTargets" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="4" type="any"></variable>
+            <variable tag="EXP_minSwitch" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="500" type="any"></variable>
+            <variable tag="EXP_maxSwitch" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="500" type="any"></variable>
+            <variable tag="EXP_minalpha" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="15" type="any"></variable>
+            <variable tag="EXP_maxalpha" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="45" type="any"></variable>
+            <variable tag="EXP_framerate" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="60" type="any"></variable>
+            <variable tag="EXP_score" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="EXP_target_collision_area" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="EXP_snr_min" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.7" type="any"></variable>
+            <variable tag="EXP_snr_max" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1" type="any"></variable>
+            <variable tag="EXP_experiment" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="null" type="string" persistant="0"></variable>
+            <variable tag="EXP_no_target_flag" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="boolean" persistant="0"></variable>
+            <variable tag="EXP_minimum_strength" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.3" type="any"></variable>
+            <variable tag="EXP_starting_state" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="EXP_response_window" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="5000" type="any"></variable>
+            <variable tag="EXP_user_reward_time" scope="global" logging="when_changed" default_value="500" type="float" persistant="1"></variable>
+            <variable tag="EXP_RDP_coherence" scope="global" logging="when_changed" default_value="0.5" type="float"></variable>
+            <variable tag="EXP_stimulus_position_y" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EXP_direction" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="EXP_CycleDuration" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="3500" type="any"></variable>
+            <variable tag="EXP_SwitchDuration" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="3000" type="any"></variable>
+            <variable tag="EXP_SteadyStateDuration" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="500" type="any"></variable>
+            <variable tag="EXP_TargetDuration" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="2000" type="any"></variable>
+            <variable tag="EXP_IEIDuration" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="16" type="any"></variable>
+            <variable tag="EXP_reward_in_ml" scope="global" logging="when_changed" default_value="0" type="float"></variable>
+            <variable tag="EXP_range" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="30" type="any"></variable>
+            <variable tag="EXP_dropsize" scope="global" logging="when_changed" default_value="0.25" type="float" persistant="1"></variable>
+            <variable tag="EXP_lower_limit" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="EXP_upper_limit" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="EXP_last_step" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
+            <variable tag="EXP_version" scope="global" logging="when_changed" default_value="1.2" type="float"></variable>
+            <variable tag="EXP_task" scope="global" logging="when_changed" default_value="null" type="string"></variable>
+            <variable tag="EXP_ITI" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="200" type="any"></variable>
+            <variable tag="EXP_tolerance" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="45" type="any"></variable>
+            <variable tag="EXP_walk_range" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="2" type="any"></variable>
+            <variable tag="EXP_fadeOutRate" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.06" type="any"></variable>
+        </folder>
+        <folder tag="IO">
+            <variable tag="IO_area_flag" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_RDP_flag" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_target_alpha" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1" type="any"></variable>
+            <variable tag="IO_rewardA" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="float">
+                <action type="assignment" tag="Assign Variable" variable="INFO_rewardGiven_ml" value="INFO_rewardGiven_ml + IO_rewardA"></action>
+            </variable>
+            <variable tag="IO_rewardB" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="float">
+                <action type="assignment" tag="Assign Variable 2" variable="INFO_rewardGiven_ml" value="INFO_rewardGiven_ml + IO_rewardB"></action>
+            </variable>
+            <variable tag="IO_RDP_controlled" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_target_phase" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_start_area_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_start_area_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_start_area_flag" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_cursor_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_cursor_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_mouse_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_mouse_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_mouse_down" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+        </folder>
+        <folder tag="Target">
+            <variable tag="IO_target_trigger_size" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="5" type="any"></variable>
+            <variable tag="IO_target_size" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="2" type="any"></variable>
+            <variable tag="IO_target_flag" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_target_flag1" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_target_flag2" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_target_flag3" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_target_flag4" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_target_ON" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="IO_target_shown" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="target_r" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="target_g" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1" type="any"></variable>
+            <variable tag="target_b" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="trigger_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="target_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="target_x1" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="target_x2" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="target_x3" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="target_x4" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="trigger_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="target_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="target_y2" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="target_y3" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="target_y4" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+            <variable tag="target_y1" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0.5" type="any"></variable>
+        </folder>
+        <folder tag="INFO">
+            <variable tag="alpha" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="degree" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="float"></variable>
+            <variable tag="diff" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="float"></variable>
+            <variable tag="five_targets" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="success" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="missed" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="failure" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="ignore" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+            <variable tag="PAUSE" scope="global" logging="when_changed" default_value="0" type="boolean"></variable>
+            <variable tag="INFO_rewardGiven_ml" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="INFO_trials" scope="global" logging="when_changed" default_value="0" type="integer"></variable>
+        </folder>
+        <folder tag="Staircase">
+            <variable tag="SC_steps" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="&quot;0.315 0.299 0.284 0.270 0.256 0.243 0.231 0.220 0.209 0.198 0.188 0.179 0.170 0.161 0.153 0.146 0.138 0.131 0.125 0.118 0.113 0.107 0.102 0.096 0.092 0.087 0.083 0.078 0.074 0.071 0.067 0.064 0.061 0.058 0.055 0.052 0.049 0.047 0.044 0.042 0.040 0.038 0.036 0.034 0.033 0.031 0.029 0.028 0.026 0.025 0.024 0.023 0.021 0.020 0.019 0.018 0.017 0.016 0.015 0.014 0.013 0.012 0.011 0.01&quot;" type="any"></variable>
+            <variable tag="SC_in" scope="global" logging="when_changed" default_value="0" type="boolean" persistant="0"></variable>
+            <variable tag="SC_in_tS" scope="global" logging="when_changed" default_value="0" type="boolean" persistant="0"></variable>
+            <variable tag="SC_out" scope="global" logging="when_changed" default_value="0" type="float" persistant="0"></variable>
+            <variable tag="SC_out_tS" scope="global" logging="when_changed" default_value="0" type="float" persistant="0"></variable>
+            <variable tag="SC_left_step" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
+            <variable tag="SC_left_step_tS" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
+            <variable tag="SC_left_rate" scope="global" logging="when_changed" default_value="4" type="integer" persistant="1"></variable>
+            <variable tag="SC_left_rate_tS" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
+            <variable tag="SC_right_step" scope="global" logging="when_changed" default_value="3" type="integer" persistant="1"></variable>
+            <variable tag="SC_right_step_tS" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
+            <variable tag="SC_right_rate" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
+            <variable tag="SC_right_rate_tS" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
+            <variable tag="SC_index_starting" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
+            <variable tag="SC_index_starting_tS" scope="global" logging="when_changed" default_value="1" type="integer" persistant="1"></variable>
+        </folder>
+        <folder tag="Selections">
+            <variable type="selection" tag="SEL_switchType" values="1,2" selection="random_without_replacement" nsamples="1" sampling_method="samples" advance_on_accept="YES" autoreset="YES"></variable>
+            <variable type="selection" tag="SEL_stepsize" values="0.5,1,1.5,2" selection="random_without_replacement" nsamples="1" sampling_method="samples" advance_on_accept="YES" autoreset="YES"></variable>
+            <variable type="selection" tag="SEL_switchFrames" values="25,28,31,34,37,40,43,46" selection="random_without_replacement" nsamples="1" sampling_method="samples" advance_on_accept="YES" autoreset="YES"></variable>
+            <variable type="selection" tag="SEL_snr" values="0.5, 0.40, 0.30, 0.20, 0.18, 0.16, 0.14, 0.12, 0.10, 0.08" selection="random_with_replacement" nsamples="10000" sampling_method="samples" advance_on_accept="YES" autoreset="YES"></variable>
+            <variable tag="LOC_stepsize" scope="local" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="LOC_type" scope="local" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="LOC_rate" scope="local" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="LOC_target" scope="local" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="LOC_frames" scope="local" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+        </folder>
+        <folder tag="dummies">
+            <variable tag="coin" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="dice" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="stepsize" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="f_alpha" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="o_alpha" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="n_alpha" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="aborted" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="angle_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1" type="any"></variable>
+            <variable tag="angle_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1" type="any"></variable>
+            <variable tag="pi" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="3.14" type="any"></variable>
+            <variable tag="dummy_trigger" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+            <variable tag="dummy_trigger_x" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1" type="any"></variable>
+            <variable tag="dummy_trigger_y" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="1" type="any"></variable>
+            <variable tag="dummy_trigger_z" scope="global" logging="when_changed" exclude_from_data_file="NO" default_value="0" type="any"></variable>
+        </folder>
+    </variables>
+    <sounds tag="Sounds">
+        <sound tag="sound_coin" type="wav_file" path="./Sounds/Coin.wav" amplitude="0.8"></sound>
+        <sound tag="sound_jump" type="wav_file" path="./Sounds/Jump.wav" amplitude="0.8"></sound>
+    </sounds>
+    <stimuli tag="Stimuli">
+        <stimulus type="blank_screen" tag="background" color="0.5,0.5,0.5"></stimulus>
+        <stimulus type="text" tag="endText" text="&quot;Done&quot;" font_name="Helvetica Neue" font_size="FB_textFontSize" text_alignment="center" color="0,0,1" x_size="FB_textXSize" y_size="FB_textYSize" x_position="0" y_position="10" rotation="0" alpha_multiplier="1"></stimulus>
+        <stimulus type="rectangle" tag="ruler" color="1,1,1" x_size="FB_ruler_size_x" y_size="FB_ruler_size_y" x_position="FB_ruler_x" y_position="FB_ruler_y" rotation="0" alpha_multiplier="0.5"></stimulus>
+        <stimulus type="rectangle" tag="counter" color="0,1,0" x_size="FB_counter_size_x" y_size="FB_counter_size_y" x_position="FB_counter_x" y_position="FB_counter_y" rotation="0" alpha_multiplier="0.5"></stimulus>
+        <stimulus type="rectangle" tag="counter_all" color="1,0.6,0" x_size="FB_counter_all_size_x" y_size="FB_counter_all_size_y" x_position="FB_counter_all_x" y_position="FB_counter_all_y" rotation="0" alpha_multiplier="0.5"></stimulus>
+        <stimulus type="rectangle" tag="midline" color="1,1,1" x_size="0.2" y_size="16" x_position="0" y_position="0" rotation="-RDP_direction" alpha_multiplier="0.5"></stimulus>
+        <stimulus type="circular_fixation_point" tag="cursor" color="1,1,1" trigger_width="dummy_trigger" trigger_watch_x="dummy_trigger_x" trigger_watch_y="dummy_trigger_y" trigger_flag="dummy_trigger_z" x_size="1" y_size="1" x_position="IO_mouse_x" y_position="IO_mouse_y" rotation="0" alpha_multiplier="1"></stimulus>
+        <stimulus type="r_d_p" tag="RDP" radius="RDP_radius" x_position="RDP_x" y_position="RDP_y" dot_density="RDP_density" dot_size="RDP_dotsize" color="RDP_r,RDP_g,RDP_b" alpha_multiplier="1.0" direction="RDP_direction" speed="RDP_speed" coherence="RDP_coherence" lifetime="RDP_lifetime" announce_dots="NO" autoplay="YES"></stimulus>
+        <stimulus type="circular_fixation_point" tag="RDP_trigger" color="0.5,0.5,0.5" trigger_width="RDP_radius*2" trigger_watch_x="IO_cursor_x" trigger_watch_y="IO_cursor_y" trigger_flag="IO_RDP_flag" x_size="RDP_radius*2" y_size="RDP_radius*2" x_position="RDP_x" y_position="RDP_y" rotation="0" alpha_multiplier="1"></stimulus>
+        <stimulus type="circular_fixation_point" tag="target" color="1,0,0" trigger_width="IO_target_size + EXP_target_collision_area" trigger_watch_x="IO_cursor_x" trigger_watch_y="IO_cursor_y" trigger_flag="IO_target_flag" x_size="IO_target_size" y_size="IO_target_size" x_position="target_x" y_position="target_y" rotation="0" alpha_multiplier="0"></stimulus>
+        <stimulus type="circular_fixation_point" tag="target1" color="1,0,0" trigger_width="IO_target_size + EXP_target_collision_area" trigger_watch_x="IO_cursor_x" trigger_watch_y="IO_cursor_y" trigger_flag="IO_target_flag1" x_size="IO_target_size" y_size="IO_target_size" x_position="target_x1" y_position="target_y1" rotation="0" alpha_multiplier="0"></stimulus>
+        <stimulus type="circular_fixation_point" tag="target2" color="1,0,0" trigger_width="IO_target_size + EXP_target_collision_area" trigger_watch_x="IO_cursor_x" trigger_watch_y="IO_cursor_y" trigger_flag="IO_target_flag2" x_size="IO_target_size" y_size="IO_target_size" x_position="target_x2" y_position="target_y2" rotation="0" alpha_multiplier="0"></stimulus>
+        <stimulus type="circular_fixation_point" tag="target3" color="1,0,0" trigger_width="IO_target_size + EXP_target_collision_area" trigger_watch_x="IO_cursor_x" trigger_watch_y="IO_cursor_y" trigger_flag="IO_target_flag3" x_size="IO_target_size" y_size="IO_target_size" x_position="target_x3" y_position="target_y3" rotation="0" alpha_multiplier="0"></stimulus>
+        <stimulus type="circular_fixation_point" tag="target4" color="1,0,0" trigger_width="IO_target_size + EXP_target_collision_area" trigger_watch_x="IO_cursor_x" trigger_watch_y="IO_cursor_y" trigger_flag="IO_target_flag4" x_size="IO_target_size" y_size="IO_target_size" x_position="target_x4" y_position="target_y4" rotation="0" alpha_multiplier="0"></stimulus>
+        <stimulus type="image_file" tag="target_coin" path="./coin.png" x_size="2" y_size="2" x_position="target_x" y_position="target_y" rotation="0" alpha_multiplier="IO_target_alpha" deferred="NO"></stimulus>
+        <stimulus type="image_file" tag="target_coin1" path="./coin.png" x_size="2" y_size="2" x_position="target_x1" y_position="target_y1" rotation="0" alpha_multiplier="IO_target_alpha" deferred="NO"></stimulus>
+        <stimulus type="image_file" tag="target_coin2" path="./coin.png" x_size="2" y_size="2" x_position="target_x2" y_position="target_y2" rotation="0" alpha_multiplier="IO_target_alpha" deferred="NO"></stimulus>
+        <stimulus type="image_file" tag="target_coin3" path="./coin.png" x_size="2" y_size="2" x_position="target_x3" y_position="target_y3" rotation="0" alpha_multiplier="IO_target_alpha" deferred="NO"></stimulus>
+        <stimulus type="image_file" tag="target_coin4" path="./coin.png" x_size="2" y_size="2" x_position="target_x4" y_position="target_y4" rotation="0" alpha_multiplier="IO_target_alpha" deferred="NO"></stimulus>
+        <stimulus type="circular_fixation_point" tag="area" color="0,1,0" trigger_width="RDP_radius*4" trigger_watch_x="IO_cursor_x" trigger_watch_y="IO_cursor_y" trigger_flag="IO_area_flag" x_size="RDP_radius*4" y_size="RDP_radius*4" x_position="0" y_position="0" rotation="0" alpha_multiplier="0"></stimulus>
+        <stimulus type="circular_fixation_point" tag="start_area" color="start_r,start_g,start_b" trigger_width="3" trigger_watch_x="IO_mouse_x" trigger_watch_y="IO_mouse_y" trigger_flag="IO_start_area_flag" x_size="3" y_size="3" x_position="0" y_position="0" rotation="0" alpha_multiplier="0.5"></stimulus>
+    </stimuli>
+    <filters tag="Filters"></filters>
+    <optimizers tag="Optimizers">
+        <filter type="Staircase_Optimizer" tag="SC_noise" input="SC_in" output="SC_out" steps_csv="SC_steps" index="SC_index_starting" leftCriterion="SC_left_rate" version="EXP_version" rightCriterion="SC_right_rate"></filter>
+    </optimizers>
+    <experiment tag="AutoTraining" full_name="" description="">
+        <protocol tag="Pre-test" nsamples="1" sampling_method="cycles" selection="sequential" interruptible="1">
+            <action type="assignment" tag="Set Staircase Starting point" variable="SC_index_starting" value="1"></action>
+            <action type="assignment" tag="Log experiment name" variable="EXP_experiment" value="&quot;20200903_ContPsychRDPMouse_anc.xml&quot;"></action>
+            <action type="assignment" tag="Log task name" variable="EXP_task" value="&quot;Mouse_WalkRDP+Target&quot;"></action>
+            <action tag="Queue background" type="queue_stimulus" stimulus="background"></action>
+            <action tag="Queue area" type="queue_stimulus" stimulus="area"></action>
+            <action tag="Start Mouse" type="start_device_IO" device="Mouse"></action>
+            <action tag="Update Display" type="update_stimulus_display"></action>
+            <trial tag="Main Task System" nsamples="3" sampling_method="cycles" selection="random_without_replacement" interruptible="YES">
+                <task_system tag="LOOP" interruptible="YES">
+                    <task_system_state tag="Wait For Mouse" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action tag="Dequeue Start Area" type="dequeue_stimulus" stimulus="start_area"></action>
+                        <action tag="Queue start_area" type="queue_stimulus" stimulus="start_area"></action>
+                        <action tag="Live Queue RDP" type="live_queue_stimulus" stimulus="RDP"></action>
+                        <action tag="Live Queue cursor" type="live_queue_stimulus" stimulus="cursor"></action>
+                        <action type="assignment" tag="Set RDP Speed to 0" variable="RDP_speed" value="0"></action>
+                        <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If Cursor inside start area, go to New Trial" condition="IO_start_area_flag" target="New Trial"></transition>
+                    </task_system_state>
+                    <task_system_state tag="New Trial" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="if" tag="Set Matlab variables" condition="1">
+                            <action type="assignment" tag="set ML sync" variable="ML_sync" value="1"></action>
+                            <action type="assignment" tag="set ML trial start" variable="ML_trialStart" value="ML_trialStart + 1"></action>
+                        </action>
+                        <action type="if" tag="Queue Targets" condition="1">
+                            <action type="assignment" tag="Set Target_y1 position" variable="target_y1" value="9"></action>
+                            <action type="assignment" tag="Set Target_x1 position" variable="target_x1" value="0"></action>
+                            <action type="assignment" tag="Set Target_x2 position 2" variable="target_x2" value="9"></action>
+                            <action type="assignment" tag="Set Target_y2 position 2" variable="target_y2" value="0"></action>
+                            <action type="assignment" tag="Set Target_x3 position 3" variable="target_x3" value="0"></action>
+                            <action type="assignment" tag="Set Target_y3 position 3" variable="target_y3" value="-9"></action>
+                            <action type="assignment" tag="Set Target_x4 position 4" variable="target_x4" value="-9"></action>
+                            <action type="assignment" tag="Set Target_y4 position 4" variable="target_y4" value="0"></action>
+                            <action tag="Live Queue Target 1" type="live_queue_stimulus" stimulus="target1"></action>
+                            <action tag="Live Queue Target 2" type="live_queue_stimulus" stimulus="target2"></action>
+                            <action tag="Live Queue Target 3" type="live_queue_stimulus" stimulus="target3"></action>
+                            <action tag="Live Queue Target 4" type="live_queue_stimulus" stimulus="target4"></action>
+                            <action tag="Live Queue Target_coin1" type="live_queue_stimulus" stimulus="target_coin1"></action>
+                            <action tag="Live Queue Target_coin 2" type="live_queue_stimulus" stimulus="target_coin2"></action>
+                            <action tag="Live Queue Target_coin 3" type="live_queue_stimulus" stimulus="target_coin3"></action>
+                            <action tag="Live Queue Target_coin 4" type="live_queue_stimulus" stimulus="target_coin4"></action>
+                            <action tag="Update Stimulus Display 2" type="update_stimulus_display" predicted_output_time=""></action>
+                        </action>
+                        <action tag="Dequeue start_area" type="dequeue_stimulus" stimulus="start_area"></action>
+                        <action type="assignment" tag="Set RDP direction from 90,180,270,360" variable="RDP_direction" value="disc_rand(0,3)*90"></action>
+                        <action type="assignment" tag="Set RDP Speed to 4" variable="RDP_speed" value="4"></action>
+                        <action tag="Pick another value for coherence" type="next_selection" selection="SEL_snr"></action>
+                        <action type="assignment" tag="Set RDP coherence to SC_out" variable="RDP_coherence" value="SC_out"></action>
+                        <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <action type="report" tag="Report trial start" message="===== TRIAL $ML_trialStart STARTS====="></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Go to update stimulus" target="Update Stimulus"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Update Stimulus" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="assignment" tag="Update Cursor Position X" variable="IO_cursor_x" value="IO_mouse_x"></action>
+                        <action type="assignment" tag="Update Cursor Position Y" variable="IO_cursor_y" value="IO_mouse_y"></action>
+                        <action type="start_timer" tag="Start Timer (FrameTimer)" timer="FrameTimer" timebase="" duration="16" duration_units="ms"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="timer_expired" tag="If FrameTimer Expired, Transition to Update Stimulus" target="Update Stimulus" timer="FrameTimer"></transition>
+                        <transition type="conditional" tag="if target hit, go to correct" condition="(IO_target_flag1 #AND RDP_direction ==0) #OR (IO_target_flag2 #AND RDP_direction ==90) #OR (IO_target_flag3 #AND RDP_direction ==180) #OR (IO_target_flag4 #AND RDP_direction ==270)" target="Correct"></transition>
+                        <transition type="conditional" tag="if distractor hit, go to wrong" condition="(IO_target_flag1 #AND RDP_direction !=0) #OR (IO_target_flag2 #AND RDP_direction !=90) #OR (IO_target_flag3 #AND RDP_direction !=180) #OR (IO_target_flag4 #AND RDP_direction !=270)" target="Wrong"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Correct" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="report" tag="report Hit" message="++ outcome: Hit"></action>
+                        <action type="assignment" tag="Set SC_in to 1" variable="SC_in" value="1"></action>
+                        <action type="assignment" tag="increment success" variable="success" value="success + 1"></action>
+                        <action type="assignment" tag="set Trial outcome to hit" variable="TRIAL_outcome" value="&quot;hit&quot;"></action>
+                        <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to End Trial" target="End Trial"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Wrong" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="assignment" tag="Set SC_in to 0" variable="SC_in" value="0"></action>
+                        <action type="assignment" tag="set Trial outcome to wrong" variable="TRIAL_outcome" value="&quot;wrong&quot;"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="direct" tag="Always Go to End Trial" target="End Trial"></transition>
+                    </task_system_state>
+                    <task_system_state tag="End Trial" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <action type="assignment" tag="Set RDP Speed to 0" variable="RDP_speed" value="0"></action>
+                        <action type="assignment" tag="Assign EXP_ITI" variable="EXP_ITI" value="disc_rand(500,1500)"></action>
+                        <action type="start_timer" tag="Start Timer" timer="ITITimer" timebase="" duration="EXP_ITI" duration_units="ms"></action>
+                        <action tag="Queue start_area 2" type="queue_stimulus" stimulus="start_area"></action>
+                        <action type="if" tag="Dequeue Targets" condition="1">
+                            <action tag="Dequeue Target 1" type="dequeue_stimulus" stimulus="target1"></action>
+                            <action tag="Dequeue Target 2" type="dequeue_stimulus" stimulus="target2"></action>
+                            <action tag="Dequeue Target 3" type="dequeue_stimulus" stimulus="target3"></action>
+                            <action tag="Dequeue Target 4" type="dequeue_stimulus" stimulus="target4"></action>
+                            <action tag="Dequeue Target_coin 1" type="dequeue_stimulus" stimulus="target_coin1"></action>
+                            <action tag="Dequeue Target_coin 2" type="dequeue_stimulus" stimulus="target_coin2"></action>
+                            <action tag="Dequeue Target_coin 3" type="dequeue_stimulus" stimulus="target_coin3"></action>
+                            <action tag="Dequeue Target_coin 4" type="dequeue_stimulus" stimulus="target_coin4"></action>
+                            <action type="assignment" tag="Reset Target 1 Flag" variable="IO_target_flag1" value="0"></action>
+                            <action type="assignment" tag="Reset Target 2 Flag" variable="IO_target_flag2" value="0"></action>
+                            <action type="assignment" tag="Reset Target 3 Flag" variable="IO_target_flag3" value="0"></action>
+                            <action type="assignment" tag="Reset Target 4 Flag" variable="IO_target_flag4" value="0"></action>
+                        </action>
+                        <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                        <action type="if" tag="Set Matlab variables" condition="1">
+                            <action type="assignment" tag="set ML sync" variable="ML_sync" value="0"></action>
+                            <action type="assignment" tag="set ML trial end" variable="ML_trialEnd" value="ML_trialStart"></action>
+                        </action>
+                        <action type="report" tag="report new cycle" message="END OF TRIAL $ML_trialEnd **********************"></action>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="conditional" tag="If Timer has expired and Cursor inside Start area, Go to Exit Experiment" condition="timer_expired(ITITimer) #AND IO_start_area_flag" target="Wait For Mouse"></transition>
+                    </task_system_state>
+                    <task_system_state tag="Exit Experiment" interruptible="YES">
+                        <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                        <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                        <transition type="yield" tag="Exit Task System..."></transition>
+                    </task_system_state>
+                </task_system>
+            </trial>
+            <action tag="Dequeue background" type="dequeue_stimulus" stimulus="background"></action>
+            <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+            <action tag="Stop Mouse" type="stop_device_IO" device="Mouse"></action>
+        </protocol>
+        <protocol tag="Mouse_WalkRDP+Target" nsamples="1" sampling_method="cycles" selection="sequential" interruptible="1">
+            <action type="assignment" tag="Set Staircase Starting point" variable="SC_index_starting" value="1"></action>
+            <action type="assignment" tag="Log experiment name" variable="EXP_experiment" value="&quot;20200903_ContPsychRDPMouse_anc.xml&quot;"></action>
+            <action type="assignment" tag="Log task name" variable="EXP_task" value="&quot;Mouse_WalkRDP+Target&quot;"></action>
+            <action type="assignment" tag="Determine Seed for alpha" variable="alpha" value="0"></action>
+            <action tag="Queue background" type="queue_stimulus" stimulus="background"></action>
+            <action tag="Queue area" type="queue_stimulus" stimulus="area"></action>
+            <action tag="Queue Stimulus 2" type="queue_stimulus" stimulus="ruler"></action>
+            <action tag="Live Queue counter_all" type="live_queue_stimulus" stimulus="counter_all"></action>
+            <action tag="Live Queue counter" type="live_queue_stimulus" stimulus="counter"></action>
+            <action tag="Start Mouse" type="start_device_IO" device="Mouse"></action>
+            <action tag="Update Display" type="update_stimulus_display"></action>
+            <trial tag="Main Task System" nsamples="3" sampling_method="cycles" selection="random_without_replacement" interruptible="YES">
+                <range_replicator tag="Number of Frames" from="25" to="43" step="6" variable="LOC_frames">
+                    <range_replicator tag="Stepsize" from="1" to="4" step="1" variable="LOC_stepsize">
+                        <range_replicator tag="Switch Type" from="1" to="2" step="1" variable="LOC_type">
+                            <task_system tag="LOOP" interruptible="YES">
+                                <task_system_state tag="Start or Continue" interruptible="YES">
+                                    <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                    <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                    <transition type="conditional" tag="if Coming from No Target state, go to Set up the Target" condition="EXP_no_target_flag" target="Set up the Target"></transition>
+                                    <transition type="conditional" tag="if Coming from other states, go to Wait For Mouse" condition="EXP_no_target_flag == 0" target="Wait For Mouse"></transition>
+                                </task_system_state>
+                                <task_system_state tag="Wait For Mouse" interruptible="YES">
+                                    <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                    <action tag="Dequeue Start Area" type="dequeue_stimulus" stimulus="start_area"></action>
+                                    <action tag="Queue start_area" type="queue_stimulus" stimulus="start_area"></action>
+                                    <action tag="Live Queue RDP" type="live_queue_stimulus" stimulus="RDP"></action>
+                                    <action tag="Live Queue cursor" type="live_queue_stimulus" stimulus="cursor"></action>
+                                    <action type="assignment" tag="Set RDP Speed to 0" variable="RDP_speed" value="0"></action>
+                                    <action type="assignment" tag="Pick RDP direction from uniform distribution" variable="alpha" value="disc_rand(0,359)"></action>
+                                    <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                                    <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                    <transition type="conditional" tag="If Cursor inside start area, go to New Trial" condition="IO_start_area_flag" target="New Trial"></transition>
+                                </task_system_state>
+                                <task_system_state tag="New Trial" interruptible="YES">
+                                    <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                    <action type="if" tag="Set Matlab variables" condition="1">
+                                        <action type="assignment" tag="set ML sync" variable="ML_sync" value="1"></action>
+                                        <action type="assignment" tag="set ML trial start" variable="ML_trialStart" value="ML_trialStart + 1"></action>
+                                    </action>
+                                    <action tag="Dequeue start_area" type="dequeue_stimulus" stimulus="start_area"></action>
+                                    <action type="assignment" tag="Set RDP Speed to 4" variable="RDP_speed" value="4"></action>
+                                    <action tag="Pick another value for coherence" type="next_selection" selection="SEL_snr"></action>
+                                    <action type="assignment" tag="Set RDP coherence to SC_out" variable="RDP_coherence" value="SC_out"></action>
+                                    <action type="assignment" tag="Start Score Timer" variable="FB_scoreTimer" value="0"></action>
+                                    <action type="if" tag="If debug mode" condition="EXP_debug">
+                                        <action tag="live Queue Midline" type="live_queue_stimulus" stimulus="midline"></action>
+                                    </action>
+                                    <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                                    <action type="report" tag="Report trial start" message="===== TRIAL $ML_trialStart STARTS====="></action>
+                                    <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                    <transition type="direct" tag="Go to Set up the Target" target="Set up the Target"></transition>
+                                </task_system_state>
+                                <task_system_state tag="Set up the Target" interruptible="YES">
+                                    <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                    <action type="if" tag="Store trial parameters to global variables" condition="1">
+                                        <action type="assignment" tag="Save LOC_type to global variable" variable="EXP_shiftType" value="LOC_type"></action>
+                                        <action type="assignment" tag="Save LOC_frames to global variable" variable="EXP_shiftFrames" value="LOC_frames"></action>
+                                        <action type="assignment" tag="Save LOC_stepsize to global variable" variable="EXP_stepsize" value="LOC_stepsize"></action>
+                                    </action>
+                                    <action type="report" tag="Report current state name" message="- Set up the Target"></action>
+                                    <action type="report" tag="Report LOCAL variables" message="Frames: $LOC_frames; StepSize: $LOC_stepsize; Type: $LOC_type"></action>
+                                    <action type="assignment" tag="Determine SwitchDurationTimer" variable="EXP_SwitchDuration" value="LOC_frames * EXP_refreshRate"></action>
+                                    <action type="report" tag="Report selected switch timer" message="- Switch will last: $EXP_SwitchDuration"></action>
+                                    <action type="assignment" tag="Reset Target switch" variable="IO_target_phase" value="0"></action>
+                                    <action type="assignment" tag="Reset Target as shown" variable="IO_target_shown" value="0"></action>
+                                    <action type="assignment" tag="Reset Transparency" variable="IO_target_alpha" value="1"></action>
+                                    <action type="assignment" tag="Reset no target state flag" variable="EXP_no_target_flag" value="0"></action>
+                                    <action tag="Dequeue Stimulus" type="dequeue_stimulus" stimulus="target"></action>
+                                    <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                                    <action type="start_timer" tag="Start Timer (SwitchDurationTimer)" timer="SwitchDurationTimer" timebase="" duration="EXP_SwitchDuration" duration_units="ms"></action>
+                                    <action type="start_timer" tag="Start Timer (SteadyStateDurationTimer)" timer="SteadyStateDurationTimer" timebase="" duration="EXP_SwitchDuration + EXP_SteadyStateDuration" duration_units="ms"></action>
+                                    <action type="start_timer" tag="Start Timer (TargetDurationTimer)" timer="TargetDurationTimer" timebase="" duration="EXP_SwitchDuration + EXP_SteadyStateDuration + EXP_TargetDuration" duration_units="ms"></action>
+                                    <action type="start_timer" tag="Start Timer (IEIDurationTimer)" timer="IEIDurationTimer" timebase="" duration="EXP_SwitchDuration + EXP_SteadyStateDuration + EXP_TargetDuration + EXP_IEIDuration" duration_units="ms"></action>
+                                    <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                    <transition type="direct" tag="Always Go to Define next Target" target="Define next Target"></transition>
+                                </task_system_state>
+                                <task_system_state tag="Define next Target" interruptible="YES">
+                                    <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                    <action type="report" tag="Report current state name" message="- Define Next Target"></action>
+                                    <action type="if" tag="Determine next alpha value" condition="1">
+                                        <action type="assignment" tag="Assign next alpha from range" variable="n_alpha" value="LOC_frames * (LOC_stepsize/3)"></action>
+                                        <action type="assignment" tag="Flip coin for next alpha sign" variable="coin" value="disc_rand(0,1)"></action>
+                                        <action type="if" tag="If coin == 0 set n_alpha to positive" condition="coin == 0">
+                                            <action type="assignment" tag="Assign sign to next alpha" variable="n_alpha" value="alpha + n_alpha"></action>
+                                        </action>
+                                        <action type="if" tag="If coin == 1 set n_alpha to negative" condition="coin == 1">
+                                            <action type="assignment" tag="Assign sign to next alpha" variable="n_alpha" value="alpha - n_alpha"></action>
+                                        </action>
+                                    </action>
+                                    <action type="assignment" tag="Store original alpha" variable="o_alpha" value="alpha"></action>
+                                    <action type="if" tag="If the shift is set to be time dependent" condition="LOC_type == 1">
+                                        <action type="assignment" tag="Determine the change per frame (stepsize)" variable="stepsize" value="((n_alpha - alpha) / (EXP_SwitchDuration / EXP_refreshRate))"></action>
+                                    </action>
+                                    <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                                    <action type="report" tag="Report Switch Duration" message="- Switch Duration $EXP_SwitchDuration"></action>
+                                    <action type="report" tag="Report Coherence level" message="- Coherence $RDP_coherence"></action>
+                                    <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                    <transition type="direct" tag="Always Go to Update Stimulus" target="Update Stimulus"></transition>
+                                </task_system_state>
+                                <task_system_state tag="Flash the Target" interruptible="YES">
+                                    <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                    <action type="assignment" tag="Throw dice for target" variable="dice" value="disc_rand(1,3)"></action>
+                                    <action type="if" tag="if LOC_target is 1" condition="dice == 1">
+                                        <action type="report" tag="Report current state name" message="- Flash the target"></action>
+                                        <action type="assignment" tag="Set alpha to current RDP direction" variable="n_alpha" value="RDP_direction"></action>
+                                        <action type="assignment" tag="Set Target x position" variable="target_x" value="sin((n_alpha)*(pi/180))*(RDP_radius + (IO_target_size/2))"></action>
+                                        <action type="assignment" tag="Set Target y position" variable="target_y" value="cos((n_alpha)*(pi/180))*(RDP_radius+ (IO_target_size/2))"></action>
+                                        <action tag="Live Queue Target" type="live_queue_stimulus" stimulus="target"></action>
+                                        <action tag="Live Queue Target_coin" type="live_queue_stimulus" stimulus="target_coin"></action>
+                                        <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                                        <action type="pulse" tag="Pulse Variable" variable="IO_target_ON" duration="EXP_TargetDuration * 1000"></action>
+                                        <action type="assignment" tag="Set Target as shown" variable="IO_target_shown" value="1"></action>
+                                    </action>
+                                    <action type="assignment" tag="Flip Target phase switch" variable="IO_target_phase" value="1"></action>
+                                    <action type="report" tag="Report dice result" message="- Dice $dice"></action>
+                                    <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                    <transition type="direct" tag="Always Go to Update Stimulus" target="Update Stimulus"></transition>
+                                </task_system_state>
+                                <task_system_state tag="Update Stimulus" interruptible="YES">
+                                    <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                    <action type="assignment" tag="Update Cursor Position X" variable="IO_cursor_x" value="IO_mouse_x"></action>
+                                    <action type="assignment" tag="Update Cursor Position Y" variable="IO_cursor_y" value="IO_mouse_y"></action>
+                                    <action type="if" tag="While the Switch Duration Timer is active ..." condition="timer_expired(SwitchDurationTimer) == 0">
+                                        <action type="if" tag="... change RDP direction" condition="1">
+                                            <action type="assignment" tag="Calculate Positive Exponential Shift" variable="alpha" value="alpha + ((n_alpha - alpha) / (EXP_SwitchDuration / EXP_framerate))"></action>
+                                            <action type="assignment" tag="Calculate Linear Shift" variable="o_alpha" value="o_alpha + stepsize"></action>
+                                            <action type="if" tag="If the shift is set to linear" condition="LOC_type == 1">
+                                                <action type="assignment" tag="Set RDP motion to linear increase" variable="RDP_direction" value="o_alpha"></action>
+                                            </action>
+                                            <action type="if" tag="If the shift is set to be step dependent" condition="LOC_type == 2">
+                                                <action type="assignment" tag="Set RDP motion according to updated alpha" variable="RDP_direction" value="alpha"></action>
+                                            </action>
+                                        </action>
+                                    </action>
+                                    <action type="start_timer" tag="Start Timer (FrameTimer)" timer="FrameTimer" timebase="" duration="16" duration_units="ms"></action>
+                                    <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                    <transition type="timer_expired" tag="If FrameTimer Expired, Transition to Update Stimulus" target="Update Stimulus" timer="FrameTimer"></transition>
+                                    <transition type="conditional" tag="If SteadyStateDurationTimer has Expired, and Target phase is 0, go to Flash the Target" condition="timer_expired(SteadyStateDurationTimer) #AND IO_target_phase == 0" target="Flash the Target"></transition>
+                                    <transition type="conditional" tag="If Target timer has expired and no target was presented go to Set up the Target" condition="timer_expired(TargetDurationTimer) #AND IO_target_phase #AND IO_target_shown == 0" target="No Target"></transition>
+                                    <transition type="conditional" tag="If Inter Event Interval timer has expired and target was presented go to Missed" condition="timer_expired(TargetDurationTimer) #AND IO_target_shown" target="Missed"></transition>
+                                    <transition type="conditional" tag="If Target phase 1, and cursor on Target, go to Deliver Reward" condition="IO_target_flag #AND IO_target_ON" target="Deliver Reward"></transition>
+                                    <transition type="conditional" tag="If Cursor out of RDP area, go to Abort the Trial" condition="IO_area_flag #AND IO_RDP_flag == 0 #AND IO_target_flag == 0" target="Abort Trial"></transition>
+                                </task_system_state>
+                                <task_system_state tag="Missed" interruptible="YES">
+                                    <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                    <action type="report" tag="report Missed" message="++ outcome: Missed"></action>
+                                    <action tag="Accept Selections" type="accept_selections" selection="Main Task System"></action>
+                                    <action type="assignment" tag="Set SC_in to 0" variable="SC_in" value="0"></action>
+                                    <action tag="Dequeue Target" type="dequeue_stimulus" stimulus="target"></action>
+                                    <action tag="Dequeue Target_coin" type="dequeue_stimulus" stimulus="target_coin"></action>
+                                    <action type="assignment" tag="increment missed" variable="ignore" value="ignore + 1"></action>
+                                    <action tag="Play Sound Jump" type="play_sound" sound="sound_jump"></action>
+                                    <action type="assignment" tag="set Trial outcome to mis" variable="TRIAL_outcome" value="&quot;mis&quot;"></action>
+                                    <action type="if" tag="Adjust Feedback" condition="1">
+                                        <action type="assignment" tag="Increase size of counter_all bar" variable="FB_counter_all_size_y" value="FB_counter_all_size_y + ((FB_ruler_size_y/2) / EXP_total_events)"></action>
+                                        <action type="assignment" tag="Change counter_all bar y position" variable="FB_counter_all_y" value="(-FB_ruler_size_y / 2) + (FB_counter_all_size_y/2)"></action>
+                                    </action>
+                                    <action type="if" tag="Set Matlab variables" condition="1">
+                                        <action type="assignment" tag="set ML sync" variable="ML_sync" value="0"></action>
+                                        <action type="assignment" tag="set ML trial end" variable="ML_trialEnd" value="ML_trialStart"></action>
+                                    </action>
+                                    <action type="report" tag="report new cycle" message="*****************************"></action>
+                                    <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                    <transition type="direct" tag="Always Go to Make Target Disappear" target="Make Target Disappear"></transition>
+                                </task_system_state>
+                                <task_system_state tag="No Target" interruptible="YES">
+                                    <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                    <action type="report" tag="report No Target" message="++ outcome: No Target"></action>
+                                    <action type="assignment" tag="set Trial outcome to no Target" variable="TRIAL_outcome" value="&quot;noT&quot;"></action>
+                                    <action type="assignment" tag="Flag as no target state" variable="EXP_no_target_flag" value="1"></action>
+                                    <action type="report" tag="report new cycle" message="*****************************"></action>
+                                    <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                    <transition type="direct" tag="Always Go to Set up the Target" target="Set up the Target"></transition>
+                                </task_system_state>
+                                <task_system_state tag="Deliver Reward" interruptible="YES">
+                                    <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                    <action type="report" tag="report Hit" message="++ outcome: Hit"></action>
+                                    <action tag="Accept Selections" type="accept_selections" selection="Main Task System"></action>
+                                    <action type="assignment" tag="Set SC_in to 1" variable="SC_in" value="1"></action>
+                                    <action type="if" tag="Turn start area green" condition="1">
+                                        <action type="assignment" tag="Assign Variable 3" variable="start_r" value="0"></action>
+                                        <action type="assignment" tag="Assign Variable 4" variable="start_g" value="1"></action>
+                                        <action type="assignment" tag="Assign Variable 5" variable="start_b" value="0"></action>
+                                    </action>
+                                    <action type="assignment" tag="IO_rewardA = 0.25" variable="IO_rewardA" value="EXP_dropsize"></action>
+                                    <action type="assignment" tag="Set RDP Coherence to 0" variable="RDP_coherence" value="0"></action>
+                                    <action type="assignment" tag="increment success" variable="success" value="success + 1"></action>
+                                    <action type="assignment" tag="increment score" variable="EXP_score" value="EXP_score + 1"></action>
+                                    <action type="if" tag="If more than 20 successful events ..." condition="success &lt; 19">
+                                        <action type="assignment" tag="... reduce Response Window (EXP_TargetDuration)" variable="EXP_TargetDuration" value="EXP_TargetDuration - 80"></action>
+                                    </action>
+                                    <action type="if" tag="Adjust Feedback" condition="1">
+                                        <action type="assignment" tag="Increase size of counter bar" variable="FB_counter_size_y" value="FB_counter_size_y + ((FB_ruler_size_y/2) / EXP_total_events)"></action>
+                                        <action type="assignment" tag="Increase size of counter_all bar" variable="FB_counter_all_size_y" value="FB_counter_all_size_y + ((FB_ruler_size_y/2) / EXP_total_events)"></action>
+                                        <action type="assignment" tag="Change counter bar y position" variable="FB_counter_y" value="(-FB_ruler_size_y / 2) + (FB_counter_size_y/2)"></action>
+                                        <action type="assignment" tag="Change counter_all bar y position" variable="FB_counter_all_y" value="(-FB_ruler_size_y / 2) + (FB_counter_all_size_y/2)"></action>
+                                        <action tag="Bring stimulus to front" type="bring_stimulus_to_front" stimulus="counter"></action>
+                                    </action>
+                                    <action type="assignment" tag="set Trial outcome to hit" variable="TRIAL_outcome" value="&quot;hit&quot;"></action>
+                                    <action tag="Play Sound Coin" type="play_sound" sound="sound_coin"></action>
+                                    <action type="if" tag="Set Matlab variables" condition="1">
+                                        <action type="assignment" tag="set ML sync" variable="ML_sync" value="0"></action>
+                                        <action type="assignment" tag="set ML trial end" variable="ML_trialEnd" value="ML_trialStart"></action>
+                                    </action>
+                                    <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                                    <action type="report" tag="report Response Window (EXP_TargetDuration)" message="$EXP_TargetDuration"></action>
+                                    <action type="report" tag="report new cycle" message="*****************************"></action>
+                                    <action type="start_timer" tag="Start Timer for Hit Feedback" timer="FeedbackTimer" timebase="" duration="250" duration_units="ms"></action>
+                                    <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                    <transition type="direct" tag="Always Go to Make Target Disappear" target="Make Target Disappear"></transition>
+                                </task_system_state>
+                                <task_system_state tag="Abort Trial" interruptible="YES">
+                                    <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                    <action type="report" tag="report Hit" message="!!! cursor out of area: Trial Aborted"></action>
+                                    <action type="assignment" tag="Aborted Switch ON" variable="aborted" value="1"></action>
+                                    <action type="assignment" tag="Set RDP speed to 0" variable="RDP_speed" value="0"></action>
+                                    <action type="if" tag="Set Matlab variables" condition="1">
+                                        <action type="assignment" tag="set ML sync" variable="ML_sync" value="0"></action>
+                                        <action type="assignment" tag="set ML trial end" variable="ML_trialEnd" value="ML_trialStart"></action>
+                                    </action>
+                                    <action tag="Queue start_area" type="queue_stimulus" stimulus="start_area"></action>
+                                    <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                                    <action type="report" tag="report new cycle" message="*****************************"></action>
+                                    <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                    <transition type="direct" tag="Always Go to End Trial" target="End Trial"></transition>
+                                </task_system_state>
+                                <task_system_state tag="Make Target Disappear" interruptible="YES">
+                                    <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                    <action type="assignment" tag="Set RDP Coherence to 0" variable="RDP_coherence" value="0"></action>
+                                    <action tag="Queue start_area" type="queue_stimulus" stimulus="start_area"></action>
+                                    <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                                    <action type="assignment" tag="Reset Transparency" variable="IO_target_alpha" value="IO_target_alpha - EXP_fadeOutRate"></action>
+                                    <action type="start_timer" tag="Start Timer for Refreshing" timer="FeedbackRefreshTimer" timebase="" duration="16" duration_units="ms"></action>
+                                    <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                    <transition type="conditional" tag="If Feedback Refresh Timer has Expired but Timer Feedback has not expired, reload Make Target Disappear" condition="timer_expired(FeedbackRefreshTimer) #AND timer_expired(FeedbackTimer)==0" target="Make Target Disappear"></transition>
+                                    <transition type="timer_expired" tag="If Timer for Feedback Expired, Transition to End Trial" target="End Trial" timer="FeedbackTimer"></transition>
+                                </task_system_state>
+                                <task_system_state tag="End Trial" interruptible="YES">
+                                    <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                    <action type="start_timer" tag="Start Timer" timer="ITITimer" timebase="" duration="EXP_ITI" duration_units="ms"></action>
+                                    <action type="if" tag="Turn cursor white" condition="1">
+                                        <action type="assignment" tag="Assign Variable 3" variable="start_r" value="0"></action>
+                                        <action type="assignment" tag="Assign Variable 4" variable="start_g" value="0"></action>
+                                        <action type="assignment" tag="Assign Variable 5" variable="start_b" value="0"></action>
+                                    </action>
+                                    <action tag="Dequeue Target" type="dequeue_stimulus" stimulus="target"></action>
+                                    <action tag="Dequeue Target_coin" type="dequeue_stimulus" stimulus="target_coin"></action>
+                                    <action tag="Update Display" type="update_stimulus_display" predicted_output_time=""></action>
+                                    <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                    <transition type="conditional" tag="If Cursor outside starting area, go to End Trial" condition="IO_start_area_flag = 0" target="End Trial"></transition>
+                                    <transition type="conditional" tag="If Timer has expired and Cursor inside Start area, Go to Exit Experiment" condition="timer_expired(ITITimer) AND IO_start_area_flag" target="Exit Experiment"></transition>
+                                </task_system_state>
+                                <task_system_state tag="Exit Experiment" interruptible="YES">
+                                    <action_marker _unmoveable="1" tag="Actions"></action_marker>
+                                    <transition_marker _unmoveable="1" tag="Transitions"></transition_marker>
+                                    <transition type="yield" tag="Exit Task System..."></transition>
+                                </task_system_state>
+                            </task_system>
+                        </range_replicator>
+                    </range_replicator>
+                </range_replicator>
+            </trial>
+            <action tag="Dequeue background" type="dequeue_stimulus" stimulus="background"></action>
+            <action tag="Update Stimulus Display" type="update_stimulus_display" predicted_output_time=""></action>
+            <action tag="Stop Mouse" type="stop_device_IO" device="Mouse"></action>
+        </protocol>
+    </experiment>
+</monkeyml>

@@ -1,0 +1,673 @@
+// %define atan2(y, x) atan(y / x) + pi() * (x < 0) * ((y >= 0) - (y < 0))
+%define atan2(y, x) ((atan(y / x) / (pi() / 180)))
+
+// I/O Devices
+
+stimulus_display 'Stimulus Display' (0.5, 0.5, 0.5)
+mouse_input Mouse (
+    mouse_position_x = IO_mouse_x
+    mouse_position_y = IO_mouse_y
+    mouse_down = IO_mouse_down
+    hide_cursor = YES
+    use_mirror_window = YES
+    )
+
+// Variables
+
+var aborted = 0
+var n_alpha = 0
+var o_alpha = 0
+var f_alpha = 0
+var stepsize = 0
+var dice = 0
+var coin = 0
+group MatLab {
+    var ML_trialEnd = 0
+    var ML_trialStart = 0
+    var ML_sync = (bool)(0)
+    var TRIAL_outcome = 0
+}
+group Feedback {
+    var start_r = 0.7
+    var start_g = 0.7
+    var start_b = 0.7
+    var FB_scoreTimer = 0
+    var FB_scoreText = 0
+    var FB_counter_x = -14.5
+    var FB_counter_y = 0
+    var FB_counter_size_y = 1
+    var FB_counter_size_x = 20
+    var FB_textFontSize = 30
+    var FB_textXSize = 5
+    var FB_textYSize = 2
+    var FB_pos_x = -14.5
+    var FB_pos_y = 0
+}
+group RDP {
+    var RDP_direction = 0
+    var RDP_radius = 8
+    var RDP_controlled_x = 0
+    var RDP_target_x = 0
+    var RDP_y = 0
+    var RDP_x = 0
+    var RDP_density = 3
+    var RDP_dotsize = 0.2
+    var RDP_speed = 3
+    var RDP_coherence = 0.3
+    var RDP_lifetime = 0.3
+    var RDP_r = 0.75
+    var RDP_g = 0.75
+    var RDP_b = 0.75
+}
+group EXP {
+    var EXP_debug = 0
+    var EXP_expShift = 0
+    var EXP_stepShift = 0
+    var EXP_theta_c = 0
+    var EXP_refreshRate = 16
+    var EXP_alwaysTargets = 0
+    var EXP_minSwitch = 1000
+    var EXP_maxSwitch = 1000
+    var EXP_minalpha = 15
+    var EXP_maxalpha = 45
+    var EXP_framerate = 60
+    var EXP_score = 0
+    var EXP_target_collision_area = 1
+    var EXP_snr_min = 0.7
+    var EXP_snr_max = 1
+    var EXP_experiment = 'null'
+    var EXP_minimum_strength = 0.3
+    var EXP_starting_state = 0
+    var EXP_response_window = 5000
+    var EXP_user_reward_time = (float)(500) (persistant = 1)
+    var EXP_RDP_coherence = 0.5
+    var EXP_stimulus_position_y = (float)(0)
+    var EXP_direction = 0
+    var EXP_CycleDuration = 3500
+    var EXP_SwitchDuration = 3000
+    var EXP_SteadyStateDuration = 500
+    var EXP_TargetDuration = 400
+    var EXP_IEIDuration = 16
+    var EXP_reward_in_ml = (float)(0)
+    var EXP_range = 30
+    var EXP_dropsize = 0.25 (persistant = 1)
+    var EXP_lower_limit = 0
+    var EXP_upper_limit = 0
+    var EXP_last_step = 1 (persistant = 1)
+    var EXP_version = 1.2
+    var EXP_task = 'null'
+    var EXP_ITI = 200
+    var EXP_tolerance = 45
+    var EXP_walk_range = 2
+    var EXP_fadeOutRate = 0.06
+}
+group IO {
+    var IO_area_flag = 0
+    var IO_RDP_flag = 0
+    var IO_target_alpha = 1
+    var IO_rewardA = (float)(0) {
+        INFO_rewardGiven_ml = INFO_rewardGiven_ml + IO_rewardA
+    }
+    var IO_rewardB = (float)(0) {
+        INFO_rewardGiven_ml = INFO_rewardGiven_ml + IO_rewardB
+    }
+    var IO_RDP_controlled = 0
+    var IO_target_phase = 0
+    var IO_start_area_x = 0
+    var IO_start_area_y = 0
+    var IO_start_area_flag = 0
+    var IO_cursor_x = 0
+    var IO_cursor_y = 0
+    var IO_mouse_x = 0
+    var IO_mouse_y = 0
+    var IO_mouse_down = 0
+    var IO_mouse_theta = 0
+}
+group Target {
+    var IO_target_trigger_size = 5
+    var IO_target_size = 2
+    var IO_target_flag = 0
+    var IO_target_ON = 0
+    var IO_target_shown = 0
+    var target_r = 0
+    var target_g = 1
+    var target_b = 0
+    var trigger_x = 0.5
+    var target_x = 0.5
+    var trigger_y = 0.5
+    var target_y = 0.5
+}
+group INFO {
+    var degree = (float)(0)
+    var diff = (float)(0)
+    var five_targets = 0
+    var success = 0
+    var missed = 0
+    var failure = 0
+    var ignore = 0
+    var PAUSE = (bool)(0)
+    var INFO_rewardGiven_ml = 0
+    var INFO_trials = 0
+}
+group Staircase {
+    var SC_in = (bool)(0)
+    var SC_in_tS = (bool)(0)
+    var SC_out = (float)(0.5)
+    var SC_out_tS = (float)(2)
+    var SC_left_step = 1 (persistant = 1)
+    var SC_left_step_tS = 1 (persistant = 1)
+    var SC_left_rate = 1 (persistant = 1)
+    var SC_left_rate_tS = 1 (persistant = 1)
+    var SC_right_step = 1 (persistant = 1)
+    var SC_right_step_tS = 1 (persistant = 1)
+    var SC_right_rate = 1 (persistant = 1)
+    var SC_right_rate_tS = 1 (persistant = 1)
+    var SC_index_starting = 1 (persistant = 1)
+    var SC_index_starting_tS = 1 (persistant = 1)
+}
+group dummies {
+    var alpha = 0
+    var angle_x = 1
+    var angle_y = 1
+    var pi = 3.14
+    var dummy_trigger = 0
+    var dummy_trigger_x = 1
+    var dummy_trigger_y = 1
+    var dummy_trigger_z = 0
+}
+
+// Sounds
+// Stimuli
+
+blank_screen background ()
+text endText (
+    text = "Done"
+    font_name = 'Helvetica Neue'
+    font_size = FB_textFontSize
+    text_alignment = center
+    color = 0,0,1
+    x_size = FB_textXSize
+    y_size = FB_textYSize
+    x_position = 0
+    y_position = 10
+    rotation = 0
+    alpha_multiplier = 1
+    )
+rectangle ruler (
+    color = 1,1,1
+    x_size = FB_counter_size_x
+    y_size = FB_counter_size_y
+    x_position = FB_counter_x
+    y_position = FB_counter_y
+    rotation = 90
+    alpha_multiplier = 0.5
+    )
+rectangle midline (
+    color = 1,1,1
+    x_size = 0.2
+    y_size = 16
+    x_position = 0
+    y_position = 0
+    rotation = -RDP_direction
+    alpha_multiplier = 0.5
+    )
+rectangle midline2 (
+    color = 1,0,0
+    x_size = 0.2
+    y_size = 16
+    x_position = 0
+    y_position = 0
+    rotation = -o_alpha
+    alpha_multiplier = 0.5
+    )
+rectangle counter (
+    color = 0,1,0
+    x_size = EXP_score
+    y_size = FB_counter_size_y
+    x_position = FB_counter_x
+    y_position = FB_counter_y
+    rotation = 90
+    alpha_multiplier = 0.5
+    )
+
+circular_fixation_point cursor (
+    color = 1,1,1
+    trigger_width = dummy_trigger
+    trigger_watch_x = dummy_trigger_x
+    trigger_watch_y = dummy_trigger_y
+    trigger_flag = dummy_trigger_z
+    x_size = 1
+    y_size = 1
+    x_position = IO_mouse_x
+    y_position = IO_mouse_y
+    rotation = IO_mouse_theta
+    alpha_multiplier = 1
+    )
+stimulus/r_d_p RDP (
+    radius = RDP_radius
+    x_position = RDP_x
+    y_position = RDP_y
+    dot_density = RDP_density
+    dot_size = RDP_dotsize
+    color = RDP_r,RDP_g,RDP_b
+    alpha_multiplier = 1.0
+    direction = RDP_direction
+    speed = RDP_speed
+    coherence = RDP_coherence
+    lifetime = RDP_lifetime
+    announce_dots = NO
+    autoplay = YES
+    )
+    
+/* stimulus/advstimulus T (
+	color = 0,0,1
+	trigger_width = dummy_trigger
+    trigger_watch_x = dummy_trigger
+    trigger_watch_y = dummy_trigger
+    trigger_flag = dummy_trigger
+    x_size = 2
+    y_size = 3
+    x_position = IO_mouse_x
+    y_position = IO_mouse_y
+    rotation = IO_mouse_theta
+    alpha_multiplier = 0.75
+	shape = "symmetric 3"
+	version = EXP_version
+	autoplay = YES
+) */
+
+circular_fixation_point RDP_trigger (
+    color = 0.5,0.5,0.5
+    trigger_width = RDP_radius*2
+    trigger_watch_x = IO_cursor_x
+    trigger_watch_y = IO_cursor_y
+    trigger_flag = IO_RDP_flag
+    x_size = RDP_radius*2
+    y_size = RDP_radius*2
+    x_position = RDP_x
+    y_position = RDP_y
+    rotation = 0
+    alpha_multiplier = 1
+    )
+circular_fixation_point target (
+    color = 1,0,0
+    trigger_width = IO_target_size + EXP_target_collision_area
+    trigger_watch_x = IO_cursor_x
+    trigger_watch_y = IO_cursor_y
+    trigger_flag = IO_target_flag
+    x_size = IO_target_size
+    y_size = IO_target_size
+    x_position = target_x
+    y_position = target_y
+    rotation = 0
+    alpha_multiplier = IO_target_alpha
+    )
+circular_fixation_point area (
+    color = 0,1,0
+    trigger_width = RDP_radius*4
+    trigger_watch_x = IO_cursor_x
+    trigger_watch_y = IO_cursor_y
+    trigger_flag = IO_area_flag
+    x_size = RDP_radius*4
+    y_size = RDP_radius*4
+    x_position = 0
+    y_position = 0
+    rotation = 0
+    alpha_multiplier = 0
+    )
+circular_fixation_point start_area (
+    color = start_r,start_g,start_b
+    trigger_width = 3
+    trigger_watch_x = IO_mouse_x
+    trigger_watch_y = IO_mouse_y
+    trigger_flag = IO_start_area_flag
+    x_size = 3
+    y_size = 3
+    x_position = 0
+    y_position = 0
+    rotation = 0
+    alpha_multiplier = 0.5
+    )
+
+// Filters
+// Optimizers
+
+/* STAIRCASE OPTIMIZER IS NOT YET FUNCTIONAL IN MWORKS 10 */
+
+/* filter/staircase_optimizer SC_autotraining (
+    input = SC_in
+    output = SC_out
+    steps_csv = "0.5 0.48 0.46 0.44 0.42 0.40 0.32 0.30 0.28 0.26 0.24 0.22 0.20 0.19 0.18 0.17 0.16 0.15 0.14 0.13 0.12 0.11 0.10 0.095 0.09 0.085 0.08 0.075 0.07 0.065 0.06 0.055 0.05 0.045 0.04 0.035 0.03 0.025 0.02 0.015 0.01 0.005 0"
+    index = SC_index_starting
+    leftCriterion = SC_left_rate
+    version = EXP_version
+    rightCriterion = SC_right_rate
+    )
+
+    
+filter/staircase_optimizer SC_autotraining_targetSize (
+    input = SC_in_tS
+    output = SC_out_tS
+    steps_csv = "4 3.8 3.6 3.4 3.2 3 2.9 2.8 2.7 2.6 2.5 2.4 2.3 2.2 2.1 2 1.9 1.8 1.7 1.6 1.5"
+    index = SC_index_starting_tS
+    leftCriterion = SC_left_rate_tS
+    version = EXP_version
+    rightCriterion = SC_right_rate_tS
+    )
+
+*/
+
+// Protocols
+
+protocol 'Mouse_WalkRDP+Target' (interruptible = 1) {
+    EXP_experiment = "20200723_ContPsychRDPMouse_anc.xml"
+    EXP_task = "Mouse_WalkRDP+Target"
+    alpha = 0
+    queue_stimulus (background)
+    queue_stimulus (area)
+    live_queue_stimulus (ruler)
+    live_queue_stimulus (counter)
+    //live_queue_stimulus (triangle)
+    live_queue_stimulus (cursor)
+    start_device_io (Mouse)
+    update_stimulus_display ()
+    block 'Main Task System' (
+        selection = random_without_replacement
+        interruptible = 1
+        ) {
+        task LOOP {
+            state 'Wait For Joystick' {
+                dequeue_stimulus (start_area)
+                queue_stimulus (start_area)
+                live_queue_stimulus (RDP)
+                RDP_speed = 0
+                update_stimulus_display ()
+                goto (
+                    target = 'New Trial'
+                    when = IO_start_area_flag
+                    )
+            }
+            state 'New Trial' {
+                if (1) {
+                    ML_sync = 1
+                    ML_trialStart = ML_trialStart + 1
+                }
+                dequeue_stimulus (start_area)
+                RDP_speed = 4
+                FB_scoreTimer = 0
+                if (EXP_debug) {
+                    live_queue_stimulus (midline)
+                    live_queue_stimulus (midline2)
+                }
+                update_stimulus_display ()
+                report ('===== TRIAL $ML_trialStart STARTS=====')
+                goto ('Set up the Target')
+            }
+            state 'Set up the Target' {
+                report ('- Set up the Target')
+                IO_target_phase = 0
+                IO_target_shown = 0
+                IO_target_alpha = 1
+                EXP_SwitchDuration = disc_rand(EXP_minSwitch,EXP_maxSwitch)
+                dequeue_stimulus (target)
+                update_stimulus_display ()
+                start_timer (
+                    timer = SwitchDurationTimer
+                    duration = EXP_SwitchDuration
+                    duration_units = ms
+                    )
+                start_timer (
+                    timer = SteadyStateDurationTimer
+                    duration = EXP_SwitchDuration + EXP_SteadyStateDuration
+                    duration_units = ms
+                    )
+                start_timer (
+                    timer = TargetDurationTimer
+                    duration = EXP_SwitchDuration + EXP_SteadyStateDuration + EXP_TargetDuration
+                    duration_units = ms
+                    )
+                start_timer (
+                    timer = IEIDurationTimer
+                    duration = EXP_SwitchDuration + EXP_SteadyStateDuration + EXP_TargetDuration + EXP_IEIDuration
+                    duration_units = ms
+                    )
+                goto ('Define next Target')
+            }
+            state 'Define next Target' {
+                report ('- Define Next Target')
+                if (1) {
+                    RDP_coherence = SC_out
+                }
+                if (1) {
+                    n_alpha = disc_rand(EXP_minalpha,EXP_maxalpha)
+                    coin = disc_rand(0,1)
+                    if (coin == 0) {
+                        n_alpha = alpha + n_alpha
+                    }
+                    if (coin == 1) {
+                        n_alpha = alpha - n_alpha
+                    }
+                }
+                o_alpha = alpha
+                if (EXP_stepShift == 0) {
+                    stepsize = ((n_alpha - alpha) / (EXP_SwitchDuration / EXP_refreshRate))
+                }
+                IO_target_size = SC_out_tS
+                update_stimulus_display ()
+                report ('- Target Size $SC_out_tS')
+                report ('- Switch Duration $EXP_SwitchDuration')
+                report ('- Coherence $SC_out')
+                report ('- Stepsize $stepsize')
+                goto ('Update Stimulus')
+            }
+            state 'Flash the Target' {
+                dice = disc_rand(EXP_alwaysTargets,4.1)
+                if (EXP_alwaysTargets) {
+                    coin = 1
+                }
+                if (dice >= 4) {
+                	report ('- Flash the target <-----------------')
+                    target_x = sin((n_alpha)*(pi/180))*(RDP_radius + (IO_target_size/2))
+                    target_y = cos((n_alpha)*(pi/180))*(RDP_radius+ (IO_target_size/2))
+                    live_queue_stimulus (target)
+                    update_stimulus_display ()
+                    pulse (
+                        variable = IO_target_ON
+                        duration = EXP_TargetDuration * 1000
+                        )
+                    IO_target_shown = 1
+                }
+                IO_target_phase = 1
+                report ('- Dice $dice')
+                goto ('Update Stimulus')
+            }
+            state 'Update Stimulus' {
+                IO_cursor_x = IO_mouse_x
+                IO_cursor_y = IO_mouse_y
+                IO_mouse_theta = atan2(-IO_cursor_y, -IO_cursor_x)
+                
+                if (IO_cursor_x < 0) {
+                   	IO_mouse_theta = IO_mouse_theta + 180 
+                }
+                if ((IO_cursor_x >= 0) #AND (IO_cursor_y < 0)) {
+                   	IO_mouse_theta = IO_mouse_theta + 360 
+                }
+
+                IO_mouse_theta = (round(IO_mouse_theta) + 90)%360
+                
+                                
+                if (timer_expired(SwitchDurationTimer) == 0) {
+                	if (1) {
+                        alpha = alpha + ((n_alpha - alpha) / (EXP_SwitchDuration / EXP_framerate))
+                        o_alpha = o_alpha + stepsize
+                        if (EXP_expShift == 0) {
+                            RDP_direction = o_alpha
+                        }
+                        if (EXP_expShift) {
+                            RDP_direction = alpha
+                        }
+                    }
+                }                
+                start_timer (
+                    timer = FrameTimer
+                    duration = 16
+                    duration_units = ms
+                    )
+                timer_expired (
+                    target = 'Update Stimulus'
+                    timer = FrameTimer
+                    )
+                goto (
+                    target = 'Flash the Target'
+                    when = timer_expired(SwitchDurationTimer) #AND IO_target_phase == 0
+                    )
+                goto (
+                    target = 'No Target'
+                    when = timer_expired(TargetDurationTimer) #AND IO_target_phase #AND IO_target_shown == 0
+                    )
+                goto (
+                    target = Missed
+                    when = IO_target_ON == 0 #AND IO_target_shown
+                    )
+                goto (
+                    target = 'Deliver Reward'
+                    when = IO_target_flag #AND IO_target_ON
+                    )
+                goto (
+                    target = 'Abort Trial'
+                    when = IO_area_flag #AND IO_RDP_flag == 0 #AND IO_target_flag == 0
+                    )
+            }
+            state Missed {
+                report ('++ outcome: Missed')
+                dequeue_stimulus (target)
+                SC_in = 0
+                SC_in_tS = 0
+                missed = missed + 1
+                TRIAL_outcome = "mis"
+                if (1) {
+                    ML_sync = 0
+                    ML_trialEnd = ML_trialStart
+                }
+                report ('*****************************')
+                goto ('Set up the Target')
+            }
+            state 'No Target' {
+                report ('++ outcome: No Target')
+                TRIAL_outcome = "noT"
+                if (1) {
+                    ML_sync = 0
+                    ML_trialEnd = ML_trialStart
+                }
+                report ('*****************************')
+                goto ('Set up the Target')
+            }
+            state 'Deliver Reward' {
+                report ('++ outcome: Hit')
+                SC_in = 1
+                SC_in_tS = 1
+                if (1) {
+                    start_r = 0
+                    start_g = 1
+                    start_b = 0
+                }
+                IO_rewardA = EXP_dropsize
+                RDP_coherence = 0
+                success = success + 1
+                EXP_score = EXP_score + 1
+                TRIAL_outcome = "hit"
+                if (1) {
+                    ML_sync = 0
+                    ML_trialEnd = ML_trialStart
+                }
+                queue_stimulus (start_area)
+                update_stimulus_display ()
+                report ('*****************************')
+                start_timer (
+                    timer = FeedbackTimer
+                    duration = 250
+                    duration_units = ms
+                    )
+                goto ('Make Target Disappear')
+            }
+            state 'Abort Trial' {
+                report ('!!! cursor out of area: Trial Aborted')
+                aborted = 1
+                RDP_speed = 0
+                if (1) {
+                    ML_sync = 0
+                    ML_trialEnd = ML_trialStart
+                }
+                queue_stimulus (start_area)
+                update_stimulus_display ()
+                report ('*****************************')
+                goto ('End Trial')
+            }
+            state 'Make Target Disappear' {
+                IO_target_alpha = IO_target_alpha - EXP_fadeOutRate
+                start_timer (
+                    timer = FeedbackRefreshTimer
+                    duration = 16
+                    duration_units = ms
+                    )
+                goto (
+                    target = 'Stop Experiment'
+                    when = EXP_score >= FB_counter_size_x
+                    )
+                goto (
+                    target = 'Make Target Disappear'
+                    when = timer_expired(FeedbackRefreshTimer) #AND timer_expired(FeedbackTimer)==0
+                    )
+                timer_expired (
+                    target = 'End Trial'
+                    timer = FeedbackTimer
+                    )
+            }
+            state 'End Trial' {
+                start_timer (
+                    timer = ITITimer
+                    duration = EXP_ITI
+                    duration_units = ms
+                    )
+                if (1) {
+                    start_r = 0
+                    start_g = 0
+                    start_b = 0
+                }
+                dequeue_stimulus (target)
+                update_stimulus_display ()
+                goto (
+                    target = 'End Trial'
+                    when = 'IO_start_area_flag = 0'
+                    )
+                goto (
+                    target = 'Wait For Joystick'
+                    when = timer_expired(ITITimer) AND IO_start_area_flag
+                    )
+            }
+            state 'Stop Experiment' {
+                queue_stimulus (endText)
+                dequeue_stimulus (target)
+                dequeue_stimulus (cursor)
+                RDP_speed = 0
+                update_stimulus_display ()
+                report ('== Stop Experiment')
+                start_timer (
+                    timer = EndTimer
+                    duration = 5
+                    duration_units = s
+                    )
+                timer_expired (
+                    target = 'Exit Experiment'
+                    timer = EndTimer
+                    )
+            }
+            state 'Exit Experiment' {
+                yield ()
+            }
+        }
+    }
+    dequeue_stimulus (background)
+    update_stimulus_display ()
+    stop_device_io (Mouse)
+}
